@@ -36,3 +36,23 @@ The endpoint [`/api/v1/integrations/datasets/{id}`](https://api.dev.hdruk.cloud/
 === "CURL"
 
     <to do>
+
+### Alternative metadata schema
+
+You can request to get your dataset metadata back using a different schema model/version, depending on what we have supported (see previous sections on available schemas and translations).
+
+=== " python requests "
+
+    ```python
+
+    response = requests.get(
+        f"{api_path}/integrations/datasets/<dataset_id>?schema_model=SchemaOrg&schema_version=BioSchema",
+        headers=headers
+    )
+
+    print(json.dumps(response.json(), indent=6))
+    ```
+
+=== "CURL"
+
+    <to do>

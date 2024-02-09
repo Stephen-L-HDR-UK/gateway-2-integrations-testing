@@ -13,19 +13,20 @@ headers = {
 
 metadata = {"metadata": json.load(open("example-hdruk212.json"))}
 
-# response = requests.post(
-#    f"{api_path}/integrations/datasets", headers=headers, json=metadata
-# )
-# dataset_id = response.json()["data"]
+response = requests.post(
+    f"{api_path}/integrations/datasets", headers=headers, json=metadata
+)
+dataset_id = response.json()["data"]
 
-dataset_id = 9
+print(json.dumps(response.json(), indent=6))
 
-# response = requests.get(
-#    f"{api_path}/integrations/datasets/{dataset_id}?schema_model=SchemaOrg&schema_version=BioSchema",
-#    headers=headers,
-# )
 
-# print(json.dumps(response.json(), indent=6))
+response = requests.put(
+    f"{api_path}/integrations/datasets/{dataset_id}", headers=headers, json=metadata
+)
+
+
+print(json.dumps(response.json(), indent=6))
 
 
 response = requests.delete(
@@ -33,3 +34,10 @@ response = requests.delete(
 )
 
 print(json.dumps(response.json(), indent=6))
+exit(0)
+# response = requests.get(
+#    f"{api_path}/integrations/datasets/{dataset_id}?schema_model=SchemaOrg&schema_version=BioSchema",
+#    headers=headers,
+# )
+
+# print(json.dumps(response.json(), indent=6))

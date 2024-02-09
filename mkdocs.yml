@@ -1,4 +1,4 @@
-site_name: HDRUK API Guide
+site_name: HDRUK Integrations Guide
 theme:
     name: material
     palette:
@@ -20,6 +20,7 @@ nav:
     - Using the API:
           - Creating a dataset: creating-a-dataset.md
           - Retrieving a dataset: retrieving-a-dataset.md
+          - Update a dataset: updating-a-dataset.md
           - Deleting a dataset: deleting-a-dataset.md
 plugins:
     - search
