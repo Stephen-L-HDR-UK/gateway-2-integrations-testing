@@ -1,0 +1,36 @@
+site_name: HDRUK API Guide
+theme:
+    name: material
+    palette:
+        scheme: hdruk
+    #custom_dir: overrides
+    #logo: images/favicon.png
+    #favicon: images/favicon.png
+    features:
+        - navigation.sections
+        - content.code.copy
+        - content.code.annotate
+extra_css:
+    - stylesheets/custom.css
+
+nav:
+    - Metadata:
+          - Creating metadata: creating-metadata.md
+          - Validating metadata: metadata-validation.md
+    - Using the API:
+          - Creating a dataset: creating-a-dataset.md
+          - Retrieving a dataset: retrieving-a-dataset.md
+          - Deleting a dataset: deleting-a-dataset.md
+plugins:
+    - search
+
+markdown_extensions:
+    - pymdownx.highlight:
+          anchor_linenums: true
+          line_spans: __span
+          pygments_lang_class: true
+    - pymdownx.inlinehilite
+    - pymdownx.snippets
+    - pymdownx.superfences
+    - pymdownx.tabbed:
+          alternate_style: true
