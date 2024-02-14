@@ -19,6 +19,7 @@ extra_css:
 nav:
     - Home: index.md
     - Gateway 2.0:
+          - Login: fe-login.md
           - API Management: fe-creating-an-app.md
           - FMA Setup: fe-creating-fma.md
     - Metadata:
