@@ -1,7 +1,13 @@
 There are multiple [metadata schemas](https://github.com/HDRUK/schemata-2) that we support:
 
--   **Recommended:** HDRUK - our public facing schema, our manual-onboarding forms are based on this schema
--   **For Internal Use:** Gateway Data Model (GWDM) - a looser and more extensive model, used to store any metadata that we accept from the gatway
+-   **Recommended:** [HDRUK 2.2.0](https://hdruk.github.io/schemata-2/HDRUK/2.2.0/) - our public facing schema, our manual-onboarding forms are based on this schema
+    -   Older supoprted versions:
+        -   [HDRUK 2.1.2](https://hdruk.github.io/schemata-2/HDRUK/2.1.2/)
+        -   [HDRUK 2.1.0](https://github.com/HDRUK/schemata-2/blob/master/hdr_schemata/models/HDRUK/2.1.0/schema.json)
+        -   [HDRUK 2.0.2](https://github.com/HDRUK/schemata-2/blob/master/hdr_schemata/models/HDRUK/2.0.2/schema.json)
+-   **Other Schemas:**
+    -   [BioSchema](https://bioschemas.org/) - we can accept data conforming to this schema definiton, it is just a lot more limited
+    -   [Gateway Data Model (GWDM 1.1)](https://hdruk.github.io/schemata-2/GWDM/1.1/) - a looser and more extensive model, used to store any metadata that we accept from the gatway
 
 We also support additional schemas, external to HDRUK, such as [BioSchema](https://bioschemas.org/).
 
