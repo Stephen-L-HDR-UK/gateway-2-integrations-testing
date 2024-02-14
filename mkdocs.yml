@@ -5,7 +5,7 @@ theme:
     palette:
         scheme: hdruk
     logo: images/logo.png
-    #favicon: images/gateway-main.svg
+    favicon: images/favicon.png
     features:
         - navigation.footer
         - navigation.instant
@@ -17,7 +17,8 @@ extra_css:
     - stylesheets/custom.css
 
 nav:
-    - Gateway:
+    - Home: index.md
+    - Gateway 2.0:
           - API Management: fe-creating-an-app.md
     - Metadata:
           - Creating metadata: creating-metadata.md

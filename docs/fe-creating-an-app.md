@@ -13,6 +13,7 @@ Please note that HDR UK cannot create application registrations on behalf of use
 
 Sign in to the Gateway with your preferred route. Make sure you have a Team set up on the Gateway. If
 you need assistance with this step, contact the HDR UK technology team using the link below.
+
 [https://www.healthdatagateway.org/about/contact-us](https://www.healthdatagateway.org/about/contact-us)
 
 ### Step 2: Access the Gateway API management
