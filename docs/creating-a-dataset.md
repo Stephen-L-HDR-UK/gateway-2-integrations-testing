@@ -6,9 +6,8 @@ You should POST application/JSON data to the endpoint where your metadata valida
 {"metadata": <metadata>},
 ```
 
-=== " python requests "
+=== " python "
 
-    Using python `requests`
     ``` python
     import requests
     import json
@@ -26,7 +25,6 @@ You should POST application/JSON data to the endpoint where your metadata valida
         "Content-Type": "application/json",
     }
 
-
     response = requests.post(
         f"{api_path}/integrations/datasets",
         headers=headers,
@@ -34,61 +32,6 @@ You should POST application/JSON data to the endpoint where your metadata valida
     )
 
     print(json.dumps(response.json(), indent=6))
-    ```
-
-    Running this returns:
-    ```
-    {
-        "message": "created",
-        "data": <dataset_id : Integer>,
-        "version": <dataset_version: Integer>
-    }
-    ```
-
-=== "python locust.io"
-
-    Create/using the file `api-test.py`
-    ``` python
-
-    from locust import HttpUser, task, between
-    import json
-
-
-    class BetaTester(HttpUser):
-        wait_time = between(5, 9)
-
-        metadata = json.load(open("example-hdruk212.json"))
-
-        client_id = "fScHE7KHejPZb0TLh4vgdJoitfymyGSMLt7oS10e"
-        app_id = "3pO6liuh64iYRkTlTEpZrdGGj8IJnTFH5h3l7HAC"
-        api_path = "/api/v1"
-        headers = {
-            "client_id": client_id,
-            "app_id": app_id,
-            "Content-Type": "application/json",
-        }
-
-
-    class UserCreatingDataset(BetaTester):
-
-        @task
-        def create_datasets(self):
-            data = { "metadata": self.metadata}
-
-            response = self.client.post(
-                f"{self.api_path}/integrations/datasets",
-                headers=self.headers,
-                json=data,
-            )
-            if response.status_code != 201:
-                print("Error:", response.status_code)
-            else:
-                print(json.dumps(response.json(), indent=6))
-    ```
-
-    Run with:
-    ```
-    locust -f api-test.py --headless -u 1 -r 1 -t 30 --host http://localhost:8000 UserCreatingDataset
     ```
 
 === "CURL"
@@ -221,5 +164,15 @@ You should POST application/JSON data to the endpoint where your metadata valida
             }
         }'
     ```
+
+Running this returns:
+
+```json
+    {
+        "message": "created",
+        "data": <dataset_id : Integer>,
+        "version": <dataset_version_id: Integer>
+    }
+```
 
 You should make a record of the dataset ID that is returned in the `data` field when the dataset is created. There are various endpoints that you can use to retrieve all your datasets and the IDs for them.

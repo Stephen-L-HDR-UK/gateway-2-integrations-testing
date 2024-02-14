@@ -20,6 +20,7 @@ nav:
     - Home: index.md
     - Gateway 2.0:
           - API Management: fe-creating-an-app.md
+          - FMA Setup: fe-creating-fma.md
     - Metadata:
           - Creating metadata: creating-metadata.md
           - Validating metadata: metadata-validation.md
