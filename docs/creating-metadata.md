@@ -1,4 +1,4 @@
-There are multiple [metadata schemas](https://github.com/HDRUK/schemata-2) that we support:
+There are multiple [metadata schemas](https://github.com/HDRUK/schemata-2) that we support that your metadata can conform to and can be submitted to our systems.
 
 -   **Recommended:** [HDRUK 2.2.0](https://hdruk.github.io/schemata-2/HDRUK/2.2.0/) - our public facing schema, our manual-onboarding forms are based on this schema
     -   Older supoprted versions:
