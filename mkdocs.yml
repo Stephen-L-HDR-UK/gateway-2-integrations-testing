@@ -23,17 +23,21 @@ nav:
           - API Management: fe-creating-an-app.md
           - FMA Setup: fe-creating-fma.md
     - Metadata:
-          - Creating metadata: creating-metadata.md
-          - Validating metadata: metadata-validation.md
+          - Create: creating-metadata.md
+          - Validate: metadata-validation.md
+          - Examples: example-metadata.md
     - Using the API:
-          - Creating a dataset: creating-a-dataset.md
-          - Retrieving a dataset: retrieving-a-dataset.md
-          - Update a dataset: updating-a-dataset.md
-          - Deleting a dataset: deleting-a-dataset.md
+          - Datasets:
+                - Create: creating-a-dataset.md
+                - Retrieve: retrieving-a-dataset.md
+                - Update: updating-a-dataset.md
+                - Delete: deleting-a-dataset.md
 plugins:
     - search
 
 markdown_extensions:
+    - admonition
+    - pymdownx.details
     - pymdownx.highlight:
           anchor_linenums: true
           line_spans: __span
