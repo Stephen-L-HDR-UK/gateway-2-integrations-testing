@@ -6,7 +6,8 @@ The Federated Metadata Automation (FMA) service enables data custodians to autom
 
 The following diagram (Fig 1) illustrates the steps involved in setting up a Federated Metadata Automation process on the Gateway:
 
-Fig 1: Federated Metadata Automation process
+![image](https://github.com/HDRUK/gateway-2-integrations-testing/assets/69473770/e0f42677-7e97-4795-90c8-1a6f4c088a42)
+**Fig 1: Federated Metadata Automation process**
 
 ### Step 1: Sign in to the Gateway
 
@@ -21,7 +22,8 @@ The FMA service is designed to enable data custodians to maintain datasets and i
 -   Go to Team Management > Integrations > Integration.
 -   Click on “Create new Integration” to initiate the configuration (Fig 2).
 
-Fig 2: Create a new Integration
+![image](https://github.com/HDRUK/gateway-2-integrations-testing/assets/69473770/83c9f3fb-5578-4af1-82e0-06036aea4285)
+**Fig 2: Create a new Integration**
 
 ### Step 3: Create a new integration (integration configuration)
 
@@ -41,7 +43,8 @@ When creating a new integration, the following information needs to be provided:
 
 Once all the required fields are filled, click on “Save configuration” to store the information on the Gateway (Fig 3). The next step is to run a test to ensure the API connection works without any errors.
 
-Fig 3: Integration configuration form
+![image](https://github.com/HDRUK/gateway-2-integrations-testing/assets/69473770/ef41d627-aaaa-44df-a3f9-6237ceb33d3f)
+**Fig 3: Integration configuration form**
 
 ### Step 4: Integration testing
 
@@ -56,13 +59,16 @@ If any of the above tests fail, an error message will be returned. If there are 
 
 #### Error Handling
 
-Fig 4: Integration testing
+![image](https://github.com/HDRUK/gateway-2-integrations-testing/assets/69473770/c674ca37-0b66-4826-a538-2557595657bb)
+**Fig 4: Integration testing**
 
 If during normal operation the server changes or datasets are moved elsewhere, the integration may become invalid and FMA will disable it. In such cases, the synchronisation of datasets will cease, and you will receive a notification. To re-enable the integration, you will need to follow the configuration process again.
 
 #### Error Codes
 
 The FMA service utilises a list of error codes (Table 1). These error codes help in identifying and handling specific issues encountered during the integration testing process.
+
+<center>
 
 | Error code | Message           | Status                |
 | ---------- | ----------------- | --------------------- |
@@ -75,11 +81,14 @@ The FMA service utilises a list of error codes (Table 1). These error codes help
 | HTTP 501   | Test Unsuccessful | Not Implemented       |
 | HTTP 503   | Test Unsuccessful | Gateway Timeout       |
 
+</center>
+
 ### Step 5: Manage integrations
 
 Clicking on “Manage Integrations” displays a list of enabled and disabled integrations. This page provides an overview and allows for easy management and monitoring of the integrations (Fig 5).
 
-Fig 5: Manage integrations
+![image](https://github.com/HDRUK/gateway-2-integrations-testing/assets/69473770/bd8cf48d-b22d-439f-ad09-c0665d2d7204)
+**Fig 5: Manage integrations**
 
 ## Custodian Datasets Endpoint
 
@@ -87,7 +96,8 @@ The HDR UK custodian specification has been developed for interoperability by pr
 
 The Interface Diagram below (Fig 6) shows how the Gateway integration ingestion script handle and process metadata catalogues:
 
-Fig 6: Integration script process metadata catalogues
+![image](https://github.com/HDRUK/gateway-2-integrations-testing/assets/69473770/246318ef-e042-4952-809b-0dae85cf598b)
+**Fig 6: Integration script process metadata catalogues**
 
 The Gateway first contacts the /datasets endpoint you provide and interprets the response. It then compares the returned information with the existing records in the Gateway database. Based on the comparison, a decision will be made for each dataset on how the metadata will be handled. There are generally three scenarios:
 
