@@ -1,19 +1,24 @@
-site_name: HDRUK Integrations Guide
+site_name: Gateway Integrations Guide
 theme:
     name: material
+    #custom_dir: docs/overrides
     palette:
         scheme: hdruk
-    #custom_dir: overrides
-    #logo: images/favicon.png
-    #favicon: images/favicon.png
+    logo: images/logo.png
+    #favicon: images/gateway-main.svg
     features:
-        - navigation.sections
+        - navigation.footer
+        - navigation.instant
+        - navigation.expand
         - content.code.copy
         - content.code.annotate
+        - toc.follow
 extra_css:
     - stylesheets/custom.css
 
 nav:
+    - Gateway:
+          - API Management: fe-creating-an-app.md
     - Metadata:
           - Creating metadata: creating-metadata.md
           - Validating metadata: metadata-validation.md
