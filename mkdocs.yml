@@ -25,7 +25,7 @@ nav:
     - Metadata:
           - Create: creating-metadata.md
           - Validate: metadata-validation.md
-          - Examples: example-metadata.md
+          - Exemplars: example-metadata.md
     - Using the API:
           - Datasets:
                 - Create: creating-a-dataset.md
