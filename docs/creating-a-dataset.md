@@ -65,11 +65,11 @@ Running this returns:
 
 You should make a record of the dataset ID that is returned in the `data` field when the dataset is created. There are various endpoints that you can use to retrieve all your datasets and the IDs for them.
 
-## Errors
+### Errors
 
-Here are some common errors you might see
+Incase you come across the following errors, please find explainations of what to do solve.
 
-### No x-application-id or x-client-id in your headers
+#### No x-application-id or x-client-id in your headers
 
 ```json
 {
@@ -81,7 +81,7 @@ Here are some common errors you might see
 
 You need to set these in the headers that you make your requests with. To find the values of these identifiers, navigate (on the gateway) to your integrations API management page (Mange API), click on your App, make sure it is enabled, click on the tab for 'Authentication' to find these values.
 
-### Invalid App credientials
+#### Invalid App credientials
 
 You've copied your App ID or Client ID wrong when you've added them to the headers
 
@@ -93,7 +93,7 @@ You've copied your App ID or Client ID wrong when you've added them to the heade
 }
 ```
 
-### App not enabled
+#### App not enabled
 
 ```json
 {

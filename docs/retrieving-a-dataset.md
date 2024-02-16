@@ -1,6 +1,6 @@
 The endpoint [`/api/v1/integrations/datasets/{id}`](https://api.dev.hdruk.cloud/api/documentation#/Dataset%20Integrations/create_datasets_from_app) can now be used to retrieve your data that you have just `POST` to the HDRUK gateway.
 
-=== " python requests "
+=== " python "
 
     ```python
 
@@ -41,6 +41,8 @@ The endpoint [`/api/v1/integrations/datasets/{id}`](https://api.dev.hdruk.cloud/
 
 You can request to get your dataset metadata back using a different schema model/version, depending on what we have supported (see previous sections on available schemas and translations).
 
+#### BioSchema
+
 === " python requests "
 
     ```python
@@ -50,9 +52,50 @@ You can request to get your dataset metadata back using a different schema model
         headers=headers
     )
 
-    print(json.dumps(response.json(), indent=6))
     ```
 
 === "CURL"
+`bash
+      curl --location 'https://api.dev.hdruk.cloud/api/v1/integrations/datasets/875?schema_model=SchemaOrg&schema_version=BioSchema' \
+        --header 'x-application-id: <application id>' \
+        --header 'x-client-id: <client id>' \
+    `
 
-    <to do>
+Will return the `data` payload with your metadata in your requested model (and version), if it is possible to translated between our GWDM and the output model.
+
+```json
+
+{
+    "message": "success, translated to model=SchemaOrg version=BioSchema",
+    "data": {
+        "@context": "https://schema.org/",
+        "@id": "https://hdruk.ac.uk",
+        "@type": "Dataset",
+        ...
+    }
+}
+
+```
+
+#### HDRUK 2.2.0 (public schema)
+
+Using `/api/v1/integrations/datasets/875?schema_model=HDRUK&schema_version=2.2.0`
+
+You can get back your metadata conforming to our public schema from our gateway data model (GWDM)
+
+```json
+{
+    "message": "success, translated to model=HDRUK version=2.2.0",
+    "data": {
+        "identifier": "96bea284-dd48-4617-84e5-8b8f888b2fb3",
+        "issued": "2021-05-10T00:00:00.000Z",
+        "modified": "2024-02-16T15:00:55.934192Z",
+        "revisions": [
+            {
+                "url": "https://placeholder.blah/96bea284-dd48-4617-84e5-8b8f888b2fb3?version=3.0.0",
+                "version": "3.0.0"
+            }
+        ],
+        "version": "3.0.1",
+        ...
+```
