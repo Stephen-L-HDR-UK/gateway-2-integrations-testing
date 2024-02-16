@@ -1,19 +1,25 @@
 There are multiple [metadata schemas](https://github.com/HDRUK/schemata-2) that we support that your metadata can conform to and can be submitted to our systems.
 
--   **Recommended:** [HDRUK 2.2.0](https://hdruk.github.io/schemata-2/HDRUK/2.2.0/) - our public facing schema, our manual-onboarding forms are based on this schema
-    -   Older supoprted versions:
-        -   [HDRUK 2.1.2](https://hdruk.github.io/schemata-2/HDRUK/2.1.2/)
-        -   [HDRUK 2.1.0](https://github.com/HDRUK/schemata-2/blob/master/hdr_schemata/models/HDRUK/2.1.0/schema.json)
-        -   [HDRUK 2.0.2](https://github.com/HDRUK/schemata-2/blob/master/hdr_schemata/models/HDRUK/2.0.2/schema.json)
--   **Other Schemas:**
-    -   [BioSchema](https://bioschemas.org/) - we can accept data conforming to this schema definiton, it is just a lot more limited
-    -   [Gateway Data Model (GWDM 1.1)](https://hdruk.github.io/schemata-2/GWDM/1.1/) - a looser and more extensive model, used to store any metadata that we accept from the gatway
+!!! tip
 
-We also support additional schemas, external to HDRUK, such as [BioSchema](https://bioschemas.org/).
+    -   **Recommended:** [HDRUK 2.2.0](https://hdruk.github.io/schemata-2/HDRUK/2.2.0/) - our public facing schema, our manual-onboarding forms are based on this schema
+        -   Older supoprted versions:
+            -   [HDRUK 2.1.2](https://hdruk.github.io/schemata-2/HDRUK/2.1.2/)
+            -   [HDRUK 2.1.0](https://github.com/HDRUK/schemata-2/blob/master/hdr_schemata/models/HDRUK/2.1.0/schema.json)
+            -   [HDRUK 2.0.2](https://github.com/HDRUK/schemata-2/blob/master/hdr_schemata/models/HDRUK/2.0.2/schema.json)
+    -   **Other Schemas:**
+        -   [BioSchema](https://bioschemas.org/) - we can accept data conforming to this schema definiton, it is just a lot more limited
+        -   [Gateway Data Model (GWDM 1.1)](https://hdruk.github.io/schemata-2/GWDM/1.1/) - a looser and more extensive model, used to store any metadata that we accept from the gatway
 
-When you create your metadata and `POST` it to our APIs, we convert this metadata, via our [translation service](https://hdr-gateway-traser-dev-qmnkcg5qjq-ew.a.run.app/docs/) into our Gateway Data Model (GWDM). Example: `HDRUK 2.2.0` &rarr; `GWDM 1.1`
+    We also support additional schemas, external to HDRUK, such as [BioSchema](https://bioschemas.org/).
 
-There are several types and versions of schemas that we can accept as input, validate and translate into our GWDM. It is also possible to retrieve your data in various different schemas by requesting the stored data is translated back into a specific example. Example: `GWDM 1.1` &rarr; `BioSchema`.
+When you create your metadata and `POST` it to our APIs, we convert this metadata, via our [translation service](https://hdr-gateway-traser-dev-qmnkcg5qjq-ew.a.run.app/docs/) into our Gateway Data Model (GWDM).
+
+-   Example: `HDRUK 2.2.0` &rarr; `GWDM 1.1`
+
+There are several types and versions of schemas that we can accept as input, validate and translate into our GWDM. It is also possible to retrieve your data in various different schemas by requesting the stored data is translated back into a specific example.
+
+-   Example: `GWDM 1.1` &rarr; `BioSchema`.
 
 What what inputs to the APIs and hence schema translations to the GWDM we can accept are dependent on which [translation](https://github.com/HDRUK/traser-mapping-files/blob/master/available.json) we can accept. Translations are using written using the transformation language [JSONata](https://jsonata.org/). You can visit our [translation-files-repo](https://github.com/HDRUK/traser-mapping-files) to see these translation maps, request new translations so your schema can be supported, report bugs in translations, or submit your own translation map.
 

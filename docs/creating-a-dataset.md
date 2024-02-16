@@ -3,32 +3,39 @@ The endpoint [`/api/v1/integrations/datasets`](https://api.dev.hdruk.cloud/api/d
 You should POST application/JSON data to the endpoint where your metadata validates against one of [our supported schemas](https://github.com/HDRUK/schemata-2/blob/master/available.json)
 
 ```json
-{"metadata": <metadata>},
+{"metadata": <metadata>}
 ```
 
 === " python "
 
+    Initialise your request client
     ``` python
     import requests
     import json
 
-    #metadata that has been validated against out 2.1.2 schema
-    metadata = json.load(open("example-hdruk212.json"))
+
+    client_id = <your client id>
+    app_id = <your app id>
+
+    api_path = "https://api.dev.hdruk.cloud/api/v1/"
 
 
-    client_id = "fScHE7KHejPZb0TLh4vgdJoitfymyGSMLt7oS10e"
-    app_id = "3pO6liuh64iYRkTlTEpZrdGGj8IJnTFH5h3l7HAC"
-    api_path = "http://localhost:8000/api/v1"
     headers = {
-        "client_id": client_id,
-        "app_id": app_id,
+        "x-client-id": client_id,
+        "x-application-id": app_id,
         "Content-Type": "application/json",
     }
+
+    ```
+
+    ```python
+    metadata = {"metadata": <JSON metadata conforming to supported schema>}
+
 
     response = requests.post(
         f"{api_path}/integrations/datasets",
         headers=headers,
-        json={"metadata": metadata},
+        json=metadata
     )
 
     print(json.dumps(response.json(), indent=6))
@@ -37,131 +44,12 @@ You should POST application/JSON data to the endpoint where your metadata valida
 === "CURL"
 
     ```
-    curl --location 'http://localhost:8000/api/v1/integrations/datasets' \
-        --header 'app_id: 3pO6liuh64iYRkTlTEpZrdGGj8IJnTFH5h3l7HAC' \
-        --header 'client_id: fScHE7KHejPZb0TLh4vgdJoitfymyGSMLt7oS10e' \
+    curl --location 'https://api.dev.hdruk.cloud/api/v1/integrations/datasets' \
+        --header 'x-application-id: <your app ID >' \
+        --header 'x-client-id: <your client ID >' \
         --header 'Content-Type: application/json' \
         --data-raw '{
-            "metadata": {
-                "required": {
-                    "gatewayId": "1234",
-                    "gatewayPid": "5124f2",
-                    "issued": "2020-08-05T14:35:59Z",
-                    "modified": "2021-01-28T14:15:46Z",
-                    "version": "0.6.9",
-                    "revisions": [
-                        {
-                            "version": "1.0.0",
-                            "url": "https://d5faf9c6-6c34-46d7-93c4-7706a5436ed9"
-                        },
-                        {
-                            "version": "2.0.0",
-                            "url": "https://a7ddefbd-31d9-4703-a738-256e4689f76a"
-                        },
-                        {
-                            "version": "0.0.1",
-                            "url": "https://9e798632-442a-427b-8d0e-456f754d28dc"
-                        },
-                        {
-                            "version": "2.1.1",
-                            "url": "https://a7ddefbd-31d9-4703-a738-256e4689f76a"
-                        }
-                    ]
-                },
-                "summary": {
-                    "abstract": "Publications that mention HDR-UK (or any variant thereof) in Acknowledgements or Author Affiliations",
-                    "contactPoint": "susheel.varma@hdruk.ac.uk",
-                    "keywords": "Preprints,Papers,HDR UK",
-                    "controlledKeywords": "",
-                    "datasetType": "list of papers",
-                    "description": "Publications that mention HDR-UK (or any variant thereof) in Acknowledgements or Author Affiliations\n\nThis will include:\n- Papers\n- COVID-19 Papers\n- COVID-19 Preprint",
-                    "doiName": "10.1093/ije/dyx196",
-                    "shortTitle": "HDR UK Papers & Preprints",
-                    "title": "DEF DATASET",
-                    "publisher": {
-                        "publisherName": "DEF DATA RESEARCH UK"
-                    }
-                },
-                "coverage": {
-                    "pathway": "NOT APPLICABLE",
-                    "physicalSampleAvailability": "NOT AVAILABLE",
-                    "spatial": "https://www.geonames.org/countries/GB/united-kingdom.html",
-                    "followup": "UNKNOWN",
-                    "typicalAgeRange": "0-0"
-                },
-                "provenance": {
-                    "origin": {
-                        "purpose": "OTHER",
-                        "source": "MACHINE GENERATED",
-                        "collectionSituation": "OTHER"
-                    },
-                    "temporal": {
-                        "endDate": "2022-04-30",
-                        "startDate": "2020-03-31",
-                        "timeLag": "NOT APPLICABLE",
-                        "accrualPeriodicity": "DAILY",
-                        "distributionReleaseDate": "2020-11-27"
-                    }
-                },
-                "accessibility": {
-                    "access": {
-                        "deliveryLeadTime": "OTHER",
-                        "jurisdiction": "GB-ENG",
-                        "dataController": "HDR UK",
-                        "dataProcessor": "HDR UK",
-                        "accessRights": "https://raw.githubusercontent.com/HDRUK/papers/master/LICENSE",
-                        "accessService": "https://github.com/HDRUK/papers",
-                        "accessRequestCost": "Free"
-                    },
-                    "usage": {
-                        "dataUseLimitation": "GENERAL RESEARCH USE",
-                        "dataUseRequirement": "RETURN TO DATABASE OR RESOURCE",
-                        "resourceCreator": "HDR UK Science Team"
-                    },
-                    "formatAndStandards": {
-                        "vocabularyEncodingSchemes": "OTHER",
-                        "conformsTo": "OTHER",
-                        "languages": "en",
-                        "formats": "CSV,JSON"
-                    }
-                },
-                "linkage": {
-                    "isGeneratedUsing": "something",
-                    "dataUses": "dunno",
-                    "isReferenceIn": "10.5281/zenodo.326615",
-                    "tools": "https://github.com/HDRUK/papers",
-                    "datasetLinkage": {
-                        "isDerivedFrom": "https://web.www.healthdatagateway.org/dataset/fd8d0743-344a-4758-bb97-f8ad84a37357",
-                        "isPartOf": "NOT APPLICABLE",
-                        "isMemberOf": "blah",
-                        "linkedDatasets": "https://web.www.healthdatagateway.org/dataset/fd8d0743-344a-4758-bb97-f8ad84a37357"
-                    },
-                    "investigations": "https://github.com/HDRUK/papers"
-                },
-                "observations": [
-                    {
-                        "observedNode": "FINDINGS",
-                        "measuredValue": 575,
-                        "observationDate": "2020-11-27",
-                        "measuredProperty": "Count",
-                        "disambiguatingDescription": "Number of papers with affiliation and/or acknowledgement to HDR UK"
-                    }
-                ],
-                "structuralMetadata": [
-                    {
-                        "name": "table1",
-                        "description": "this is table 1",
-                        "columns": [
-                            {
-                                "name": "column1",
-                                "description": "this is column1",
-                                "dataType": "String",
-                                "sensitive": false
-                            }
-                        ]
-                    }
-                ]
-            }
+            "metadata": {<JSON metadata conforming to supported schema>}
         }'
     ```
 
@@ -176,3 +64,43 @@ Running this returns:
 ```
 
 You should make a record of the dataset ID that is returned in the `data` field when the dataset is created. There are various endpoints that you can use to retrieve all your datasets and the IDs for them.
+
+## Errors
+
+Here are some common errors you might see
+
+### No x-application-id or x-client-id in your headers
+
+```json
+{
+    "code": 401,
+    "message": "Please provide a x-application-id and x-client-id in your headers",
+    "details": ...
+}
+```
+
+You need to set these in the headers that you make your requests with. To find the values of these identifiers, navigate (on the gateway) to your integrations API management page (Mange API), click on your App, make sure it is enabled, click on the tab for 'Authentication' to find these values.
+
+### Invalid App credientials
+
+You've copied your App ID or Client ID wrong when you've added them to the headers
+
+```json
+{
+    "code": 401,
+    "message": "No known integration matches the credentials provided"
+    ...
+}
+```
+
+### App not enabled
+
+```json
+{
+    "code": 400,
+    "message": "Application has not been enabled!",
+    ...
+}
+```
+
+Navigate (on the gateway) to your integrations API management page (Mange API), click on your App, your the application you have copied over the App and Client ID (from the Authentication tab) make sure the App is set to enabled on the 'App info' tab.
