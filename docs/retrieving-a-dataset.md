@@ -55,11 +55,12 @@ You can request to get your dataset metadata back using a different schema model
     ```
 
 === "CURL"
-`bash
-      curl --location 'https://api.dev.hdruk.cloud/api/v1/integrations/datasets/875?schema_model=SchemaOrg&schema_version=BioSchema' \
-        --header 'x-application-id: <application id>' \
-        --header 'x-client-id: <client id>' \
-    `
+
+    ```bash
+        curl --location 'https://api.dev.hdruk.cloud/api/v1/integrations/datasets/875?schema_model=SchemaOrg&schema_version=BioSchema' \
+            --header 'x-application-id: <application id>' \
+            --header 'x-client-id: <client id>' \
+    ```
 
 Will return the `data` payload with your metadata in your requested model (and version), if it is possible to translated between our GWDM and the output model.
 
