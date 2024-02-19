@@ -1,5 +1,5 @@
 Deleting an dataset using `DELETE` on the endpoint [`/api/v1/integrations/datasets/{id}`](https://api.dev.hdruk.cloud/api/documentation#/Dataset%20Integrations/create_datasets_from_app)
-=== " python requests "
+=== " python "
 
     ```python
 
@@ -8,16 +8,22 @@ Deleting an dataset using `DELETE` on the endpoint [`/api/v1/integrations/datase
         headers=headers
     )
 
-    print(json.dumps(response.json(), indent=6))
-    ```
 
-    Running this returns the dat that we store for your metadata
-    ```
-    {
-        "message": "success"
-    }
     ```
 
 === "CURL"
 
-    <to do>
+    ```bash
+    curl -X DELETE \
+            --location 'https://api.dev.hdruk.cloud/api/v1/integrations/datasets/<dataset_id>' \
+            --header 'x-application-id: <application id>' \
+            --header 'x-client-id: <client id>' \
+    ```
+
+Running this returns the message if it was successfull
+
+```
+{
+    "message": "success"
+}
+```

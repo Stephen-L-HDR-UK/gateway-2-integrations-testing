@@ -67,7 +67,19 @@ You should make a record of the dataset ID that is returned in the `data` field 
 
 ### Errors
 
-Incase you come across the following errors, please find explainations of what to do solve.
+Please find below a summary of likely errors and their meanings.
+
+#### Unauthorised permissions to create
+
+If your app did enable permissions to create a dataset then you'll see the following response (code `400`) from the
+
+```json
+{
+      "code": 400,
+      "message": "Application permissions do not allow this request",
+      "details": {...}
+}
+```
 
 #### No x-application-id or x-client-id in your headers
 
