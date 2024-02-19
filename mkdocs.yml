@@ -32,6 +32,9 @@ nav:
                 - Retrieve: retrieving-a-dataset.md
                 - Update: updating-a-dataset.md
                 - Delete: deleting-a-dataset.md
+    - Using FMA:
+          - Test Server: fma-test-server.md
+          - Setup on the Gateway: fma-setup.md
 plugins:
     - search
 
