@@ -71,7 +71,7 @@ Please find below a summary of likely errors and their meanings.
 
 #### Unauthorised permissions to create
 
-If your app did enable permissions to create a dataset then you'll see the following response (code `400`) from the
+If your app did enable permissions to create a dataset then you'll see the following response (code `400`).
 
 ```json
 {
