@@ -47,7 +47,7 @@ You can request to get your dataset metadata back using a different schema model
 
 #### BioSchema
 
-=== " python requests "
+=== " python "
 
     ```python
 

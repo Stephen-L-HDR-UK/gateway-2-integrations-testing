@@ -1,6 +1,6 @@
 Method `PUT` [`/api/v1/integrations/datasets/{id}`](https://api.dev.hdruk.cloud/api/documentation#/Dataset%20Integrations/create_datasets_from_app) you can update your dataset metadata with a new version
 
-=== " python requests "
+=== " python "
 
     ```python
 
