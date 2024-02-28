@@ -35,7 +35,7 @@ Description: A brief description of the app.
 Notification contacts: Email addresses for relevant notification recipients.
 After completing the required fields, click "Save & Continue" to proceed to the permissions page.
 
-![image](https://github.com/HDRUK/gateway-2-integrations-testing/assets/69473770/9ef3dbda-a23d-4b48-ad86-96b50ead0175)
+![image](https://github.com/HDRUK/gateway-2-integrations-testing/assets/69473770/5667e21e-576d-4aec-9a96-92448c4375fc)
 _Fig 2: App info_
 
 ### Step 4: Define Permissions
