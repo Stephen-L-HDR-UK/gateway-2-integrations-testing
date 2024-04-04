@@ -101,14 +101,14 @@ The Interface Diagram below (Fig 6) shows how the Gateway integration ingestion 
 
 The Gateway first contacts the /datasets endpoint you provide and interprets the response. It then compares the returned information with the existing records in the Gateway database. Based on the comparison, a decision will be made for each dataset on how the metadata will be handled. There are generally three scenarios:
 
-### New Dataset
+### 1. New Dataset
 
 If new data is detected through the ingestion script, it will be retrieved and stored in the Gateway database, and it will be made visible on the Gateway.
 
-### Updated Dataset
+### 2. Updated Dataset
 
 The Gateway ingestion script determines if a dataset has changed since the last synchronisation. It specifically compares the ID of the dataset and the version that was last provided with the current version. The script does not check for a newer version number but rather a different version number. This accounts for cases where a dataset may be reverted to a previous version. Updates to datasets are automatically made live on the Gateway, and the previous version of the dataset will be archived following existing Gateway processes.
 
-### Delete Dataset
+### 3.Delete Dataset
 
 The ingestion script can detect datasets that have been removed from the custodian metadata catalogue. If a dataset ID is no longer found in the /datasets endpoint, it will be considered a deleted dataset. A "deleted" dataset will be archived on the Gateway, along with all previous versions, and will no longer be visible on the Gateway following existing processes.

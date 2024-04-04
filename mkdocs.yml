@@ -33,8 +33,7 @@ nav:
                 - Update: updating-a-dataset.md
                 - Delete: deleting-a-dataset.md
     - Using FMA:
-          - Test Server: fma-test-server.md
-          - Setup on the Gateway: fma-setup.md
+          - Test Server Example: fma-test-server.md
 plugins:
     - search
 

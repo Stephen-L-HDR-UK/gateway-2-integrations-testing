@@ -1,11 +1,16 @@
 ## Schema Validation
 
-Once you have created your metadata, for example for the HDRUK schema `2.1.2`, you can use [various routes](https://hdr-gateway-traser-dev-qmnkcg5qjq-ew.a.run.app/docs/) of the translation service to check to see if it validates against this schema:
+Once you have created your metadata, for example for the HDRUK schema `2.1.2`, you can use [various routes](https://hdr-gateway-traser-dev-qmnkcg5qjq-ew.a.run.app/docs/) of the translation service to check to see if it validates against this schema.
+
+Using the example file found at [https://github.com/HDRUK/gateway-2-integrations-testing/blob/master/example-hdruk212.json](https://github.com/HDRUK/gateway-2-integrations-testing/blob/master/example-hdruk212.json):
 
 === "python"
 
     Using python `requests`
+    
     ``` python
+    import json
+    import requests
 
     metadata = json.load(open("example-hdruk212.json"))
 
@@ -25,9 +30,10 @@ Once you have created your metadata, for example for the HDRUK schema `2.1.2`, y
 === "CURL"
 
     ```bash
-     curl --location 'http://localhost:3001/find?with_errors=1' \
-        --header 'Content-Type: application/json' \
-        --data-raw '{<data>}'
+     metadata='{"metadata": '$(cat example-hdruk212.json)'}'
+     curl --location 'https://hdr-gateway-traser-dev-qmnkcg5qjq-ew.a.run.app/find?with_errors=1'\
+     --header 'Content-Type: application/json' --data  \
+     --data "$metadata"
     ```
 
 Responds with:
@@ -55,6 +61,22 @@ Responds with:
                         "message": "must have required property 'publishingFrequency'"
                 },
                 {
+                        "instancePath": "/provenance/temporal",
+                        "schemaPath": "#/properties/temporal/anyOf/1/type",
+                        "keyword": "type",
+                        "params": {
+                            "type": "null"
+                        },
+                        "message": "must be null"
+                },
+                {
+                        "instancePath": "/provenance/temporal",
+                        "schemaPath": "#/properties/temporal/anyOf",
+                        "keyword": "anyOf",
+                        "params": {},
+                        "message": "must match a schema in anyOf"
+                },
+                {
                         "instancePath": "/provenance",
                         "schemaPath": "#/properties/provenance/anyOf/1/type",
                         "keyword": "type",
@@ -72,7 +94,54 @@ Responds with:
                 }
             ]
     },
-    ....
+    {
+            "name": "HDRUK",
+            "version": "2.1.0",
+            "matches": false,
+            "errors": [
+                {
+                        "instancePath": "/summary/publisher/logo",
+                        "schemaPath": "#/definitions/url/format",
+                        "keyword": "format",
+                        "params": {
+                            "format": "uri"
+                        },
+                        "message": "must match format \"uri\""
+                }
+            ]
+    },
+    {
+            "name": "HDRUK",
+            "version": "2.0.2",
+            "matches": false,
+            "errors": [
+                {
+                        "instancePath": "",
+                        "schemaPath": "#/additionalProperties",
+                        "keyword": "additionalProperties",
+                        "params": {
+                            "additionalProperty": "structuralMetadata"
+                        },
+                        "message": "must NOT have additional properties"
+                }
+            ]
+    },
+    {
+            "name": "HDRUK",
+            "version": "2.2.1",
+            "matches": false,
+            "errors": [
+                {
+                        "instancePath": "/summary",
+                        "schemaPath": "#/required",
+                        "keyword": "required",
+                        "params": {
+                            "missingProperty": "datasetType"
+                        },
+                        "message": "must have required property 'datasetType'"
+                }
+            ]
+    },
     {
             "name": "HDRUK",
             "version": "2.2.0",
@@ -105,7 +174,54 @@ Responds with:
                 }
             ]
     },
-    ...
+    {
+            "name": "GWDM",
+            "version": "1.1",
+            "matches": false,
+            "errors": [
+                {
+                        "instancePath": "",
+                        "schemaPath": "#/required",
+                        "keyword": "required",
+                        "params": {
+                            "missingProperty": "required"
+                        },
+                        "message": "must have required property 'required'"
+                }
+            ]
+    },
+    {
+            "name": "GWDM",
+            "version": "1.2",
+            "matches": false,
+            "errors": [
+                {
+                        "instancePath": "",
+                        "schemaPath": "#/required",
+                        "keyword": "required",
+                        "params": {
+                            "missingProperty": "required"
+                        },
+                        "message": "must have required property 'required'"
+                }
+            ]
+    },
+    {
+            "name": "SchemaOrg",
+            "version": "default",
+            "matches": false,
+            "errors": [
+                {
+                        "instancePath": "",
+                        "schemaPath": "#/required",
+                        "keyword": "required",
+                        "params": {
+                            "missingProperty": "name"
+                        },
+                        "message": "must have required property 'name'"
+                }
+            ]
+    },
     {
             "name": "SchemaOrg",
             "version": "BioSchema",
@@ -122,7 +238,22 @@ Responds with:
                 }
             ]
     },
-    ...
+    {
+            "name": "SchemaOrg",
+            "version": "GoogleRecommended",
+            "matches": false,
+            "errors": [
+                {
+                        "instancePath": "",
+                        "schemaPath": "#/required",
+                        "keyword": "required",
+                        "params": {
+                            "missingProperty": "name"
+                        },
+                        "message": "must have required property 'name'"
+                }
+            ]
+    }
 ]
 ```
 
@@ -132,7 +263,16 @@ You can use the route `validate` instead of `find` to validate a payload against
 
     ```python
 
+    import json
+    import requests
+
     metadata = json.load(open("example-hdruk212.json"))
+
+    headers = {
+        "Content-Type": "application/json",
+    }
+
+    traser_uri = "https://hdr-gateway-traser-dev-qmnkcg5qjq-ew.a.run.app"
 
     response = requests.post(
         f"{traser_uri}/validate?input_schema=HDRUK&input_version=2.1.2",
@@ -181,7 +321,8 @@ You can use the route `validate` instead of `find` to validate a payload against
 === "CURL"
 
     ```
-    curl --location 'http://localhost:3001/validate?input_schema=HDRUK&input_version=2.1.2' \
+    metadata='{"metadata": '$(cat example-hdruk212.json)'}'
+    curl --location 'https://hdr-gateway-traser-dev-qmnkcg5qjq-ew.a.run.app/validate?input_schema=HDRUK&input_version=2.1.2' \
     --header 'Content-Type: application/json' \
-    --data-raw '{<data>}'
+    --data "$metadata"
     ```

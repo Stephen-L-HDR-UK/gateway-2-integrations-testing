@@ -1,4 +1,4 @@
-The endpoint [`/api/v1/integrations/datasets`](https://api.dev.hdruk.cloud/api/documentation#/Dataset%20Integrations/create_datasets_from_app) should be used to create dataset(s) on the gateway by posting metadata describing these datasets to our API endpoint.
+The endpoint [`/api/v1/integrations/datasets`](https://api.dev.hdruk.cloud/api/documentation#/Datasets/create_datasets_integrations) should be used to create dataset(s) on the gateway by posting metadata describing these datasets to our API endpoint.
 
 You should POST application/JSON data to the endpoint where your metadata validates against one of [our supported schemas](https://github.com/HDRUK/schemata-2/blob/master/available.json)
 
@@ -17,7 +17,7 @@ You should POST application/JSON data to the endpoint where your metadata valida
     client_id = <your client id>
     app_id = <your app id>
 
-    api_path = "https://api.dev.hdruk.cloud/api/v1/"
+    api_path = "https://api.dev.hdruk.cloud/api/v1"
 
 
     headers = {
@@ -26,9 +26,6 @@ You should POST application/JSON data to the endpoint where your metadata valida
         "Content-Type": "application/json",
     }
 
-    ```
-
-    ```python
     metadata = {"metadata": <JSON metadata conforming to supported schema>}
 
 
@@ -81,6 +78,8 @@ If your app did enable permissions to create a dataset then you'll see the follo
 }
 ```
 
+This will need fixing on the Permissions tab for the app.
+
 #### No x-application-id or x-client-id in your headers
 
 ```json
@@ -115,4 +114,44 @@ You've copied your App ID or Client ID wrong when you've added them to the heade
 }
 ```
 
-Navigate (on the gateway) to your integrations API management page (Mange API), click on your App, your the application you have copied over the App and Client ID (from the Authentication tab) make sure the App is set to enabled on the 'App info' tab.
+Navigate (on the Gateway) to your Integrations > API Management page (Manage API), and select the App. Check that you have copied over the App and Client ID (from the Authentication tab) correctly, and make sure the App is set to 'Enabled' on the 'App Info' tab.
+
+#### Invalid format
+
+```json
+{
+      "message": "metadata is in an unknown format and cannot be processed",
+      "details": {
+            "traser_message": {
+                  "message": "Input metadata object matched no known schemas",
+                  "details": {
+                        "available_schemas": {
+                              "HDRUK": [
+                                    "2.1.2",
+                                    "2.1.3",
+                                    "2.1.0",
+                                    "2.0.2",
+                                    "2.2.1",
+                                    "2.2.0"
+                              ],
+                              "GWDM": [
+                                    "1.0",
+                                    "1.1",
+                                    "1.2"
+                              ],
+                              "SchemaOrg": [
+                                    "default",
+                                    "BioSchema",
+                                    "GoogleRecommended"
+                              ]
+                        }
+                  }
+            },
+            "wasTranslated": false,
+            "metadata": null,
+            "statusCode": 400
+      }
+}
+```
+
+The supplied metadata is not in any valid format. Use the TRASER `find` endpoint (navigate within these docs to `Metadata > Validate`) to understand the reasons for invalidity.
