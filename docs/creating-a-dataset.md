@@ -90,11 +90,11 @@ This will need fixing on the Permissions tab for the app.
 }
 ```
 
-You need to set these in the headers that you make your requests with. To find the values of these identifiers, navigate (on the gateway) to your integrations API management page (Mange API), click on your App, make sure it is enabled, click on the tab for 'Authentication' to find these values.
+You must set these in the request headers. To find the values of these identifiers, navigate (on the Gateway) to `Integrations > API Management page > Manage API`, select your App, make sure it is set to 'Enabled' on the 'App Info' tab, and then click on the 'Authentication' tab to find the Client ID and App ID.
 
-#### Invalid App credientials
+#### Invalid App credentials
 
-You've copied your App ID or Client ID wrong when you've added them to the headers
+App ID and Client ID have been supplied, but don't match an existing integration. Please check you have copied the credentials correctly.
 
 ```json
 {
@@ -114,7 +114,7 @@ You've copied your App ID or Client ID wrong when you've added them to the heade
 }
 ```
 
-Navigate (on the Gateway) to your Integrations > API Management page (Manage API), and select the App. Check that you have copied over the App and Client ID (from the Authentication tab) correctly, and make sure the App is set to 'Enabled' on the 'App Info' tab.
+Navigate (on the Gateway) to `Integrations > API Management > Manage API`, and select the App. Ensure the App is set to 'Enabled' on the 'App Info' tab.
 
 #### Invalid format
 
