@@ -1,4 +1,4 @@
-The endpoint [`/api/v1/integrations/datasets/{id}`](https://api.dev.hdruk.cloud/api/documentation#/Dataset%20Integrations/create_datasets_from_app) can now be used to retrieve your data that you have just `POST` to the HDRUK gateway.
+The endpoint [`/api/v1/integrations/datasets/{id}`](https://api.dev.hdruk.cloud/api/documentation#/Datasets/fetch_datasets_integrations) can now be used to retrieve your data that you have just `POST`ed to the HDRUK gateway.
 
 === " python "
 
@@ -19,31 +19,71 @@ The endpoint [`/api/v1/integrations/datasets/{id}`](https://api.dev.hdruk.cloud/
         --header 'x-client-id: <your client ID >'
     ```
 
-Running this returns the dat that we store for your metadata
+Running this returns the data that we store for your metadata
 
 ```
-    {
-    "id": 16,
-    "created_at": "2024-02-09T12:10:23.000000Z",
-    "updated_at": "2024-02-09T12:10:23.000000Z",
-    "deleted_at": null,
-    "dataset_id": 16,
-    "metadata": {
-            "metadata": {
-                "required": {
-                        "gatewayId": "16",
-                        "gatewayPid": "5537be3a-e448-4214-8946-8ce1e75a74c8",
-                        "issued": "2024-02-09T12:10:23.591675Z",
-                        "modified": "2024-02-09T12:10:23.591698Z",
-                        "revisions": [],
-                        "version": "3.0.0"
-                },
-                ...
+{
+    "message": "success",
+    "data": {
+        "id": 16,
+        "mongo_object_id": null,
+        "mongo_id": null,
+        "mongo_pid": null,
+        "datasetid": null,
+        "pid": "9b76e4c6-a9fc-40e9-9ab3-22c6a93f22c2",
+        "source": null,
+        "discourse_topic_id": 0,
+        "is_cohort_discovery": false,
+        "commercial_use": 0,
+        "state_id": 0,
+        "uploader_id": 0,
+        "metadataquality_id": 0,
+        "user_id": 5,
+        "team_id": 1,
+        "views_count": 0,
+        "views_prev_count": 0,
+        "has_technical_details": 1,
+        "created": "2024-04-04 13:29:30",
+        "updated": "2024-04-04 13:29:30",
+        "submitted": "2024-04-04 13:29:30",
+        "published": null,
+        "created_at": "2024-04-04T13:29:30.000000Z",
+        "updated_at": "2024-04-04T13:29:30.000000Z",
+        "deleted_at": null,
+        "create_origin": "API",
+        "status": "ACTIVE",
+        "named_entities": [],
+        "collections": [],
+        "versions": [
+            {
+                "id": 662,
+                "created_at": "2024-04-04T13:29:30.000000Z",
+                "updated_at": "2024-04-04T13:29:30.000000Z",
+                "deleted_at": null,
+                "dataset_id": 662,
+                "metadata": {
+                    "metadata": {
+                        "required": {
+                            "gatewayId": "662",
+                            "gatewayPid": "9b76e4c6-a9fc-40e9-9ab3-22c6a93f22c2",
+                            "issued": "2024-04-04T13:29:30.039074Z",
+                            "modified": "2024-04-04T13:29:30.039087Z",
+                            "revisions": [],
+                            "version": "3.0.0"
+                        },
+                        ...
+                    }
+                }
+            },
+            ...
+        ]
+    }
+}
 ```
 
 ### Alternative metadata schema
 
-You can request to get your dataset metadata back using a different schema model/version, depending on what we have supported (see previous sections on available schemas and translations).
+You can request to get your dataset metadata back using a different schema model/version, depending on what we support (see previous sections on available schemas and translations), using the `schema_model` and `scheme_version` query parameters.
 
 #### BioSchema
 
@@ -66,7 +106,7 @@ You can request to get your dataset metadata back using a different schema model
             --header 'x-client-id: <client id>' \
     ```
 
-Will return the `data` payload with your metadata in your requested model (and version), if it is possible to translated between our GWDM and the output model.
+Sample output:
 
 ```json
 
@@ -84,9 +124,7 @@ Will return the `data` payload with your metadata in your requested model (and v
 
 #### HDRUK 2.2.0 (public schema)
 
-Using `/api/v1/integrations/datasets/<dataset_id>?schema_model=HDRUK&schema_version=2.2.0`
-
-You can get back your metadata conforming to our public schema from our gateway data model (GWDM)
+Using `/api/v1/integrations/datasets/<dataset_id>?schema_model=HDRUK&schema_version=2.2.0` you can get back your metadata conforming to our public schema from our Gateway Data Model (GWDM):
 
 ```json
 {
@@ -111,7 +149,7 @@ You can get back your metadata conforming to our public schema from our gateway 
 
 Please find below a summary of likely errors and their meanings.
 
-#### Cannot find dataset by <dataset_id>
+#### Cannot find dataset by `dataset_id`
 
 If the `<dataset_id>` that you use to retrieve your dataset (`/api/v1/integrations/datasets/<dataset_id>`) does not exist or is invalid then you'll see the following error:
 
@@ -141,7 +179,7 @@ If a dataset has been created and then subsquently deleted you will get the foll
 
 #### Unauthorised permissions to retrieve
 
-If your app did enable permissions to retrieve a dataset then you'll see the following response (code `400`).
+If your app does not have permissions to retrieve a dataset then you'll see the following response (code `400`):
 
 ```json
 {
@@ -153,8 +191,7 @@ If your app did enable permissions to retrieve a dataset then you'll see the fol
 
 #### No schema version
 
-If you request the data in another model, you must use `/integrations/datasets/{dataset_id}?schema_model={model}&schema_verson={version}"`
-otherwise you may get a `500` response if you forgot to specify both:
+If you request the data in another model, you must supply both `schema_model` and `schema_version`, e.g. `/integrations/datasets/{dataset_id}?schema_model={model}&schema_version={version}"`. Supplying only one will generate the following:
 
 ```json
 {
@@ -166,7 +203,7 @@ otherwise you may get a `500` response if you forgot to specify both:
 
 #### Unknown output schema
 
-If you request the output schema that does not exist or is not supported, example `/integrations/datasets/{dataset_id}?schema_model=HDRUK&schema_version=2.2.3`. You'll get the following response and error coming from our translation service. Navigate to 'creating metadata' to learn about what models and translations are supported.
+If you request an output schema that does not exist or is not supported, for example `/integrations/datasets/{dataset_id}?schema_model=HDRUK&schema_version=2.2.3`, you will receive the following response and error from the translation service.
 
 ```json
 {
@@ -183,3 +220,4 @@ If you request the output schema that does not exist or is not supported, exampl
     }
 }
 ```
+Navigate within these docs to `Metadata > Create` to learn about what models and translations are supported.

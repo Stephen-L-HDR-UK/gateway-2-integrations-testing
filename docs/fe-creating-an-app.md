@@ -1,12 +1,12 @@
 ## Introduction
 
 The API Management Service enables data custodians to streamline metadata transfer to the Gateway
-through the creation of API keys. This guide offers step-by-step instructions on setting up and managing the
+through the creation of API keys. This guide offers step-by-step instructions for setting up and managing the
 API self-service on the Gateway.
 
 ## Create a new API key
 
-The API management feature allows data custodians to create API keys and link them to the Gateway.
+The API management feature allows data custodians to create API keys and ?link them to the Gateway.
 Please note that HDR UK cannot create application registrations on behalf of users.
 
 ### Step 1: Sign into the Gateway
@@ -16,7 +16,7 @@ you need assistance with this step, contact the HDR UK technology team using the
 
 [https://www.healthdatagateway.org/about/contact-us](https://www.healthdatagateway.org/about/contact-us)
 
-### Step 2: Access the Gateway API management
+### Step 2: Access the Gateway API management page
 
 If you have the necessary permissions (Team admin or Developer), you can access the service by following
 these steps:
@@ -29,11 +29,12 @@ _Fig 1: Create a new API key_
 
 ### Step 3: Create a new API Key
 
-When creating a new API, provide the following information (Fig 2):
-Public app name: Name of the app you wish to create.
-Description: A brief description of the app.
-Notification contacts: Email addresses for relevant notification recipients.
-After completing the required fields, click "Save & Continue" to proceed to the permissions page.
+When creating a new API Key, provide the following information (Fig 2):
+
+- Public app name: Name of the app you wish to create.
+- Description: A brief description of the app.
+- Notification contacts: User accounts for relevant notification recipients.
+- After completing the required fields, click "Save & Continue" to proceed to the permissions page.
 
 ![image](https://github.com/HDRUK/gateway-2-integrations-testing/assets/69473770/5667e21e-576d-4aec-9a96-92448c4375fc)
 _Fig 2: App info_
@@ -49,11 +50,13 @@ _Fig 3: Permissions matrix_
 
 It is recommended that when creating Apps on the Gateway you only assign permissions that the app will
 need. We would suggest a minimal permissions approach, for instance: if an App is going to be managing
-datasets we would recommend datasets.create, datasets.read, datasets.update and datasets.delete, there
-would be no need to grant the app permissions to manage tools or Data Uses.
-Once the desired permissions scope is set, click "Save & finish" to complete the API setup. Please note, at
-the current time, only functionality for datasets has been enabled on the Gateway.
-The API key will be revealed in the authentication tab after completing the app setup (Fig 4). The Client ID is
+Datasets we would recommend `datasets.create`, `datasets.read`, `datasets.update` and `datasets.delete`. There
+would be no need to grant the app permissions to manage Tools or Data Uses.
+
+Once the desired permissions scope is set, click "Save & Finish" to complete the API setup. Please note, at
+the current time, only functionality for Datasets has been enabled on the Gateway.
+
+Click on the newly-created app\s entry. The API key will be revealed in the "Authentication" tab after completing the app setup (Fig 4). The Client ID is
 crucial for configuring your API settings; ensure to copy it and apply it to your API settings accordingly.
 
 ![image](https://github.com/HDRUK/gateway-2-integrations-testing/assets/69473770/2c0ec13f-bbe8-4a07-94ee-adc9b8c5620a)

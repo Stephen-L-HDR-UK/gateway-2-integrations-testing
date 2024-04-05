@@ -1,31 +1,33 @@
-There are multiple [metadata schemas](https://github.com/HDRUK/schemata-2) that we support that your metadata can conform to and can be submitted to our systems.
+There are multiple [metadata schemas](https://hdruk.github.io/schemata-2/) that we support that your metadata can conform to and can be submitted to our systems.
 
 !!! tip
 
-    -   **Recommended:** [HDRUK 2.2.0](https://hdruk.github.io/schemata-2/HDRUK/2.2.0/) - our public facing schema, our manual-onboarding forms are based on this schema
-        -   Older supoprted versions:
+    -   **Recommended:** [HDRUK 2.2.0](https://hdruk.github.io/schemata-2/HDRUK/2.2.0/) is our public facing schema. Our manual-onboarding forms are based on this schema.
+        -   Older supported versions:
             -   [HDRUK 2.1.2](https://hdruk.github.io/schemata-2/HDRUK/2.1.2/)
             -   [HDRUK 2.1.0](https://github.com/HDRUK/schemata-2/blob/master/hdr_schemata/models/HDRUK/2.1.0/schema.json)
             -   [HDRUK 2.0.2](https://github.com/HDRUK/schemata-2/blob/master/hdr_schemata/models/HDRUK/2.0.2/schema.json)
     -   **Other Schemas:**
-        -   [BioSchema](https://bioschemas.org/) - we can accept data conforming to this schema definiton, it is just a lot more limited
-        -   [Gateway Data Model (GWDM 1.1)](https://hdruk.github.io/schemata-2/GWDM/1.1/) - a looser and more extensive model, used to store any metadata that we accept from the gatway
+        -   [BioSchema](https://bioschemas.org/) - we can accept data conforming to this schema definition, but it is more limited
+        -   [Gateway Data Model (GWDM 1.1)](https://hdruk.github.io/schemata-2/GWDM/1.1/) - a more general and flexible model. We use this schema internally to store any metadata that we accept from external sources.
 
     We also support additional schemas, external to HDRUK, such as [BioSchema](https://bioschemas.org/).
 
-When you create your metadata and `POST` it to our APIs, we convert this metadata, via our [translation service](https://hdr-gateway-traser-dev-qmnkcg5qjq-ew.a.run.app/docs/) into our Gateway Data Model (GWDM).
+When you create your metadata and `POST` it to our APIs, the [translation service](https://hdr-gateway-traser-dev-qmnkcg5qjq-ew.a.run.app/docs/) converts this metadata into the Gateway Data Model (GWDM) for internal storage.
 
 -   Example: `HDRUK 2.2.0` &rarr; `GWDM 1.1`
 
-There are several types and versions of schemas that we can accept as input, validate and translate into our GWDM. It is also possible to retrieve your data in various different schemas by requesting the stored data is translated back into a specific example.
+There are several schemas, each with possibly multiple versions, that we support. Metadata in each can be accepted as input, validated and translated into our GWDM.
+
+It is also possible to retrieve your data in various different schemas by requesting the stored data is translated into a specific schema.
 
 -   Example: `GWDM 1.1` &rarr; `BioSchema`.
 
-What what inputs to the APIs and hence schema translations to the GWDM we can accept are dependent on which [translation](https://github.com/HDRUK/traser-mapping-files/blob/master/available.json) we can accept. Translations are using written using the transformation language [JSONata](https://jsonata.org/). You can visit our [translation-files-repo](https://github.com/HDRUK/traser-mapping-files) to see these translation maps, request new translations so your schema can be supported, report bugs in translations, or submit your own translation map.
+The input-output combinations of schemas we support are dependent on the list of [translations](https://github.com/HDRUK/traser-mapping-files/blob/master/available.json) which are implemented. Translations are using written using the transformation language [JSONata](https://jsonata.org/). You can visit our [translation files repo](https://github.com/HDRUK/traser-mapping-files) to see these translation maps; request new translations so your schema can be supported; report bugs in translations; or submit your own translation map.
 
 ## Supported Schemas
 
-To find out what schemas we support, you can use our translation service [(TRASER)](https://hdr-gateway-traser-dev-qmnkcg5qjq-ew.a.run.app/docs/) to list what models and what versions of the the model we support.
+To find out which schemas we support, you can use our translation service [(TRASER)](https://hdr-gateway-traser-dev-qmnkcg5qjq-ew.a.run.app/docs/) to list them, including the specific versions.
 
 You can visit the repository [https://hdruk.github.io/schemata-2/](https://hdruk.github.io/schemata-2/) to see a summary of our schemas and a change log between different versions.
 
@@ -52,11 +54,13 @@ Schemas are published as [pydantic](https://docs.pydantic.dev/latest/) models th
                 "2.1.3",
                 "2.1.0",
                 "2.0.2",
+                "2.2.1",
                 "2.2.0"
         ],
         "GWDM": [
                 "1.0",
-                "1.1"
+                "1.1",
+                "1.2"
         ],
         "SchemaOrg": [
                 "default",
@@ -74,7 +78,7 @@ Schemas are published as [pydantic](https://docs.pydantic.dev/latest/) models th
 
     Returns:
     ```bash
-    {"HDRUK":["2.1.2","2.1.3","2.1.0","2.0.2","2.2.0"],"GWDM":["1.0","1.1"],"SchemaOrg":["default","BioSchema","GoogleRecommended"]}
+    {"HDRUK":["2.1.2","2.1.3","2.1.0","2.0.2","2.2.1","2.2.0"],"GWDM":["1.0","1.1","1.2"],"SchemaOrg":["default","BioSchema","GoogleRecommended"]}
     ```
 
 === "Web Browser"
@@ -92,7 +96,7 @@ Our translation service will also allow you to see what available translations t
     import requests
     import json
 
-    traser_uri = "ttps://hdr-gateway-traser-dev-qmnkcg5qjq-ew.a.run.app"
+    traser_uri = "https://hdr-gateway-traser-dev-qmnkcg5qjq-ew.a.run.app"
     response = requests.get(f"{traser_uri}/list/templates")
 
     print(json.dumps(response.json(), indent=6))
@@ -138,6 +142,36 @@ Our translation service will also allow you to see what available translations t
                 "input_version": "2.1.2"
         },
         {
+                "output_model": "HDRUK",
+                "output_version": "2.2.1",
+                "input_model": "HDRUK",
+                "input_version": "2.2.0"
+        },
+        {
+                "output_model": "HDRUK",
+                "output_version": "2.2.1",
+                "input_model": "GWDM",
+                "input_version": "1.2"
+        },
+        {
+                "output_model": "HDRUK",
+                "output_version": "2.2.0",
+                "input_model": "HDRUK",
+                "input_version": "2.1.2"
+        },
+        {
+                "output_model": "HDRUK",
+                "output_version": "2.2.0",
+                "input_model": "HDRUK",
+                "input_version": "2.2.1"
+        },
+        {
+                "output_model": "HDRUK",
+                "output_version": "2.2.0",
+                "input_model": "GWDM",
+                "input_version": "1.1"
+        },
+        {
                 "output_model": "GWDM",
                 "output_version": "1.0",
                 "input_model": "HDRUK",
@@ -164,8 +198,38 @@ Our translation service will also allow you to see what available translations t
         {
                 "output_model": "GWDM",
                 "output_version": "1.1",
+                "input_model": "HDRUK",
+                "input_version": "2.2.0"
+        },
+        {
+                "output_model": "GWDM",
+                "output_version": "1.1",
                 "input_model": "GWDM",
                 "input_version": "1.0"
+        },
+        {
+                "output_model": "GWDM",
+                "output_version": "1.1",
+                "input_model": "GWDM",
+                "input_version": "1.2"
+        },
+        {
+                "output_model": "GWDM",
+                "output_version": "1.1",
+                "input_model": "SchemaOrg",
+                "input_version": "BioSchema"
+        },
+        {
+                "output_model": "GWDM",
+                "output_version": "1.2",
+                "input_model": "HDRUK",
+                "input_version": "2.2.1"
+        },
+        {
+                "output_model": "GWDM",
+                "output_version": "1.2",
+                "input_model": "GWDM",
+                "input_version": "1.1"
         },
         {
                 "output_model": "SchemaOrg",
@@ -184,6 +248,12 @@ Our translation service will also allow you to see what available translations t
                 "output_version": "BioSchema",
                 "input_model": "GWDM",
                 "input_version": "1.0"
+        },
+        {
+                "output_model": "SchemaOrg",
+                "output_version": "BioSchema",
+                "input_model": "GWDM",
+                "input_version": "1.1"
         },
         {
                 "output_model": "SchemaOrg",
@@ -209,7 +279,7 @@ Our translation service will also allow you to see what available translations t
 
     Returns:
     ```bash
-    [{"output_model":"HDRUK","output_version":"2.1.2","input_model":"HDRUK","input_version":"datasetv2"},{"output_model":"HDRUK","output_version":"2.1.2","input_model":"HDRUK","input_version":"2.1.3"},{"output_model":"HDRUK","output_version":"2.1.2","input_model":"HDRUK","input_version":"2.0.2"},{"output_model":"HDRUK","output_version":"2.1.2","input_model":"GWDM","input_version":"1.0"},{"output_model":"HDRUK","output_version":"2.1.2","input_model":"GWDM","input_version":"1.1"},{"output_model":"HDRUK","output_version":"2.1.3","input_model":"HDRUK","input_version":"2.1.2"},{"output_model":"GWDM","output_version":"1.0","input_model":"HDRUK","input_version":"2.1.2"},{"output_model":"GWDM","output_version":"1.0","input_model":"GWDM","input_version":"1.1"},{"output_model":"GWDM","output_version":"1.0","input_model":"SchemaOrg","input_version":"default"},{"output_model":"GWDM","output_version":"1.1","input_model":"HDRUK","input_version":"2.1.2"},{"output_model":"GWDM","output_version":"1.1","input_model":"GWDM","input_version":"1.0"},{"output_model":"SchemaOrg","output_version":"default","input_model":"HDRUK","input_version":"2.1.2"},{"output_model":"SchemaOrg","output_version":"default","input_model":"GWDM","input_version":"1.1"},{"output_model":"SchemaOrg","output_version":"BioSchema","input_model":"GWDM","input_version":"1.0"},{"output_model":"SchemaOrg","output_version":"GoogleRecommended","input_model":"HDRUK","input_version":"2.1.2"},{"output_model":"SchemaOrg","output_version":"GoogleRecommended","input_model":"GWDM","input_version":"1.0"}]
+    [{"output_model":"HDRUK","output_version":"2.1.2","input_model":"HDRUK","input_version":"datasetv2"},{"output_model":"HDRUK","output_version":"2.1.2","input_model":"HDRUK","input_version":"2.1.3"},{"output_model":"HDRUK","output_version":"2.1.2","input_model":"HDRUK","input_version":"2.0.2"},{"output_model":"HDRUK","output_version":"2.1.2","input_model":"GWDM","input_version":"1.0"},{"output_model":"HDRUK","output_version":"2.1.2","input_model":"GWDM","input_version":"1.1"},{"output_model":"HDRUK","output_version":"2.1.3","input_model":"HDRUK","input_version":"2.1.2"},{"output_model":"HDRUK","output_version":"2.2.1","input_model":"HDRUK","input_version":"2.2.0"},{"output_model":"HDRUK","output_version":"2.2.1","input_model":"GWDM","input_version":"1.2"},{"output_model":"HDRUK","output_version":"2.2.0","input_model":"HDRUK","input_version":"2.1.2"},{"output_model":"HDRUK","output_version":"2.2.0","input_model":"HDRUK","input_version":"2.2.1"},{"output_model":"HDRUK","output_version":"2.2.0","input_model":"GWDM","input_version":"1.1"},{"output_model":"GWDM","output_version":"1.0","input_model":"HDRUK","input_version":"2.1.2"},{"output_model":"GWDM","output_version":"1.0","input_model":"GWDM","input_version":"1.1"},{"output_model":"GWDM","output_version":"1.0","input_model":"SchemaOrg","input_version":"default"},{"output_model":"GWDM","output_version":"1.1","input_model":"HDRUK","input_version":"2.1.2"},{"output_model":"GWDM","output_version":"1.1","input_model":"HDRUK","input_version":"2.2.0"},{"output_model":"GWDM","output_version":"1.1","input_model":"GWDM","input_version":"1.0"},{"output_model":"GWDM","output_version":"1.1","input_model":"GWDM","input_version":"1.2"},{"output_model":"GWDM","output_version":"1.1","input_model":"SchemaOrg","input_version":"BioSchema"},{"output_model":"GWDM","output_version":"1.2","input_model":"HDRUK","input_version":"2.2.1"},{"output_model":"GWDM","output_version":"1.2","input_model":"GWDM","input_version":"1.1"},{"output_model":"SchemaOrg","output_version":"default","input_model":"HDRUK","input_version":"2.1.2"},{"output_model":"SchemaOrg","output_version":"default","input_model":"GWDM","input_version":"1.1"},{"output_model":"SchemaOrg","output_version":"BioSchema","input_model":"GWDM","input_version":"1.0"},{"output_model":"SchemaOrg","output_version":"BioSchema","input_model":"GWDM","input_version":"1.1"},{"output_model":"SchemaOrg","output_version":"GoogleRecommended","input_model":"HDRUK","input_version":"2.1.2"},{"output_model":"SchemaOrg","output_version":"GoogleRecommended","input_model":"GWDM","input_version":"1.0"}]
     ```
 
 === "Web Browser"

@@ -1,6 +1,8 @@
+We provide an example test server that fits the specification defined in [the FMA Setup page](https://hdruk.github.io/gateway-2-integrations-testing/fe-creating-fma/).
+
 ### FMA Datasets
 
-The main `datasets` payload for matches the [FMA schema](https://github.com/HDRUK/schemata-2/blob/master/hdr_schemata/models/FMA/fma.schema.json) and allows FMA to be able to pull metadata for your datasets:
+The main `datasets` payload matches the [FMA schema](https://github.com/HDRUK/schemata-2/blob/master/hdr_schemata/models/FMA/fma.schema.json) and allows FMA to be able to pull metadata for your datasets:
 
 [https://hdr-gateway-fma-test-server-dev-qmnkcg5qjq-ew.a.run.app/api/v1/noauth/exemplar/datasets](https://hdr-gateway-fma-test-server-dev-qmnkcg5qjq-ew.a.run.app/api/v1/noauth/exemplar/datasets)
 
@@ -50,7 +52,7 @@ The main `datasets` payload for matches the [FMA schema](https://github.com/HDRU
 
 ### Dataset Example
 
-For example one of the datasets listed in the above datasets payload directs the service to the location of where to find metadata for a dataset that matches the HDRUK 2.1.2 schema.
+Meanwhile, the `/datasets/{id}` endpoint provides information about the selected dataset in the HDRUK 2.1.2 schema.
 
 Example:
 
@@ -82,3 +84,15 @@ Example:
     ...
 }
 ```
+
+The following information can be entered when creating (and then updating) an FMA integration with the FMA test service:
+
+-   Integration Type: Datasets
+-   Authentication Type: NO_Auth
+-   Base URL: https://hdr-gateway-fma-test-server-dev-qmnkcg5qjq-ew.a.run.app
+-   Datasets Endpoint: /api/v1/noauth/datasets
+-   Dataset Endpoint: /api/v1/noauth/dataset/{id}
+
+<img width="1036" alt="image" src="https://github.com/HDRUK/gateway-2-integrations-testing/assets/69473770/5945e019-c6e3-4da7-843a-ce46309940f5">
+
+As can be seen from the screenshot above, the successful testing (black box on right hand side) of this endpoint allows us to enable its usage.

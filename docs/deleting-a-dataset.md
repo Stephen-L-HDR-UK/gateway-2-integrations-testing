@@ -1,10 +1,10 @@
-Deleting an dataset using `DELETE` on the endpoint [`/api/v1/integrations/datasets/{id}`](https://api.dev.hdruk.cloud/api/documentation#/Dataset%20Integrations/create_datasets_from_app)
+Deleting an dataset using `DELETE` on the endpoint [`/api/v1/integrations/datasets/{id}`](https://api.dev.hdruk.cloud/api/documentation#/Datasets/delete_datasets_integrations)
 === " python "
 
     ```python
 
     response = requests.delete(
-        f"{api_path}/integrations/datasets/<dataset_id>",
+        f"{api_path}integrations/datasets/<dataset_id>",
         headers=headers
     )
 
@@ -20,10 +20,12 @@ Deleting an dataset using `DELETE` on the endpoint [`/api/v1/integrations/datase
             --header 'x-client-id: <client id>' \
     ```
 
-Running this returns the message if it was successfull
+If successful, this returns
 
 ```
 {
     "message": "success"
 }
 ```
+
+Please see the previous page regarding dataset creation (`Using the API > Datasets > Create`) for details of the likely error messages you may receive from the `DELETE` endpoint.

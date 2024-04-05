@@ -1,4 +1,4 @@
-Method `PUT` [`/api/v1/integrations/datasets/{id}`](https://api.dev.hdruk.cloud/api/documentation#/Dataset%20Integrations/create_datasets_from_app) you can update your dataset metadata with a new version
+Using the `PUT` method to [`/api/v1/integrations/datasets/{id}`](https://api.dev.hdruk.cloud/api/documentation#/Datasets/update_datasets_integrations) you can update your dataset metadata with a new _version_.
 
 === " python "
 
@@ -40,14 +40,18 @@ Running this returns a structure like:
                         "id": 875,
                         ...
                   },
+                  {
+                        "id": 882,
+                        ...
+                  },
                   ...
             ]
       }
 }
 ```
 
-It returns what data we now hold for this dataset (i.e. multiple versions as you have now updated your dataset with a new version)
+This shows the data we now hold for this dataset (i.e. multiple versions as you have now updated your dataset with a new version).
 
 ### Errors
 
-Please see the previous page for dataset creation, the errors you may receive from an update will be similar to errors you can get from creating a dataset - they'll most likely be due to incorrect metadata or non-existing a non-existing dataset.
+Please see the previous page regarding dataset creation (`Using the API > Datasets > Create`) for details of the likely error messages you may receive from the `PUT` endpoint.
