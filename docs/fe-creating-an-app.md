@@ -21,8 +21,9 @@ you need assistance with this step, contact the HDR UK technology team using the
 If you have the necessary permissions (Team admin or Developer), you can access the service by following
 these steps:
 
--   Navigate to Team Management > Integrations > API management.
--   Click on “Create API keys” to initiate the process (Fig 1)
+-   Navigate to the Team Management page for your Team, by clicking on your name in the top-right corner of the window, and selecting the appropriate Team name in the dropdown list.
+-   In the menu on the left-hand side, select `Integrations > API management`.
+-   Click on “Create API-key” to initiate the process (Fig 1)
 
 ![](https://github.com/HDRUK/gateway-2-integrations-testing/assets/69473770/4dd0dbc8-10ae-46a0-b567-9c98c3367987)
 _Fig 1: Create a new API key_
