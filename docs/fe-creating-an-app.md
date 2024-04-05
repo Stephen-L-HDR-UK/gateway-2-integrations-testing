@@ -33,7 +33,7 @@ When creating a new API Key, provide the following information (Fig 2):
 
 - Public app name: Name of the app you wish to create.
 - Description: A brief description of the app.
-- Notification contacts: Email addresses for relevant notification recipients.
+- Notification contacts: User accounts for relevant notification recipients.
 - After completing the required fields, click "Save & Continue" to proceed to the permissions page.
 
 ![image](https://github.com/HDRUK/gateway-2-integrations-testing/assets/69473770/5667e21e-576d-4aec-9a96-92448c4375fc)
