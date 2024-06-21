@@ -1,8 +1,8 @@
 ## Schema Validation
 
-Once you have created your metadata, for example for the HDRUK schema `2.1.2`, you can use [various routes](https://hdr-gateway-traser-dev-qmnkcg5qjq-ew.a.run.app/docs/) of the translation service to check to see if it validates against this schema.
+Once you have created your metadata, for example for the HDRUK schema `3.0.0`, you can use [various routes](https://hdr-gateway-traser-dev-qmnkcg5qjq-ew.a.run.app/docs/) of the translation service to check to see if it validates against this schema.
 
-Using the example file found at [https://github.com/HDRUK/gateway-2-integrations-testing/blob/master/example-hdruk212.json](https://github.com/HDRUK/gateway-2-integrations-testing/blob/master/example-hdruk212.json):
+Using the example file found at [https://github.com/HDRUK/gateway-2-integrations-testing/blob/master/example-hdruk300.json](https://github.com/HDRUK/gateway-2-integrations-testing/blob/master/example-hdruk300.json):
 
 === "python"
 
@@ -12,7 +12,7 @@ Using the example file found at [https://github.com/HDRUK/gateway-2-integrations
     import json
     import requests
 
-    metadata = json.load(open("example-hdruk212.json"))
+    metadata = json.load(open("example-hdruk300.json"))
 
     headers = {
         "Content-Type": "application/json",
@@ -30,7 +30,7 @@ Using the example file found at [https://github.com/HDRUK/gateway-2-integrations
 === "CURL"
 
     ```bash
-     metadata='{"metadata": '$(cat example-hdruk212.json)'}'
+     metadata='{"metadata": '$(cat example-hdruk300.json)'}'
      curl --location 'https://hdr-gateway-traser-dev-qmnkcg5qjq-ew.a.run.app/find?with_errors=1'\
      --header 'Content-Type: application/json' --data  \
      --data "$metadata"
@@ -41,218 +41,218 @@ Responds with:
 ```
 [
     {
-            "name": "HDRUK",
-            "version": "2.1.2",
-            "matches": true,
-            "errors": null
-    },
-    {
-            "name": "HDRUK",
-            "version": "2.1.3",
-            "matches": false,
-            "errors": [
-                {
-                        "instancePath": "/provenance/temporal",
-                        "schemaPath": "#/required",
-                        "keyword": "required",
-                        "params": {
-                            "missingProperty": "publishingFrequency"
-                        },
-                        "message": "must have required property 'publishingFrequency'"
+        "name": "HDRUK",
+        "version": "2.1.2",
+        "matches": false,
+        "errors": [
+            {
+                "instancePath": "/summary",
+                "schemaPath": "#/required",
+                "keyword": "required",
+                "params": {
+                    "missingProperty": "publisher"
                 },
-                {
-                        "instancePath": "/provenance/temporal",
-                        "schemaPath": "#/properties/temporal/anyOf/1/type",
-                        "keyword": "type",
-                        "params": {
-                            "type": "null"
-                        },
-                        "message": "must be null"
+                "message": "must have required property 'publisher'"
+            }
+        ]
+    },
+    {
+        "name": "HDRUK",
+        "version": "2.1.3",
+        "matches": false,
+        "errors": [
+            {
+                "instancePath": "/summary",
+                "schemaPath": "#/required",
+                "keyword": "required",
+                "params": {
+                    "missingProperty": "publisher"
                 },
-                {
-                        "instancePath": "/provenance/temporal",
-                        "schemaPath": "#/properties/temporal/anyOf",
-                        "keyword": "anyOf",
-                        "params": {},
-                        "message": "must match a schema in anyOf"
+                "message": "must have required property 'publisher'"
+            }
+        ]
+    },
+    {
+        "name": "HDRUK",
+        "version": "2.1.0",
+        "matches": false,
+        "errors": [
+            {
+                "instancePath": "/summary",
+                "schemaPath": "#/required",
+                "keyword": "required",
+                "params": {
+                    "missingProperty": "publisher"
                 },
-                {
-                        "instancePath": "/provenance",
-                        "schemaPath": "#/properties/provenance/anyOf/1/type",
-                        "keyword": "type",
-                        "params": {
-                            "type": "null"
-                        },
-                        "message": "must be null"
+                "message": "must have required property 'publisher'"
+            }
+        ]
+    },
+    {
+        "name": "HDRUK",
+        "version": "2.0.2",
+        "matches": false,
+        "errors": [
+            {
+                "instancePath": "",
+                "schemaPath": "#/additionalProperties",
+                "keyword": "additionalProperties",
+                "params": {
+                    "additionalProperty": "structuralMetadata"
                 },
-                {
-                        "instancePath": "/provenance",
-                        "schemaPath": "#/properties/provenance/anyOf",
-                        "keyword": "anyOf",
-                        "params": {},
-                        "message": "must match a schema in anyOf"
-                }
-            ]
+                "message": "must NOT have additional properties"
+            }
+        ]
     },
     {
-            "name": "HDRUK",
-            "version": "2.1.0",
-            "matches": false,
-            "errors": [
-                {
-                        "instancePath": "/summary/publisher/logo",
-                        "schemaPath": "#/definitions/url/format",
-                        "keyword": "format",
-                        "params": {
-                            "format": "uri"
-                        },
-                        "message": "must match format \"uri\""
-                }
-            ]
+        "name": "HDRUK",
+        "version": "2.2.1",
+        "matches": false,
+        "errors": [
+            {
+                "instancePath": "/summary",
+                "schemaPath": "#/required",
+                "keyword": "required",
+                "params": {
+                    "missingProperty": "publisher"
+                },
+                "message": "must have required property 'publisher'"
+            }
+        ]
     },
     {
-            "name": "HDRUK",
-            "version": "2.0.2",
-            "matches": false,
-            "errors": [
-                {
-                        "instancePath": "",
-                        "schemaPath": "#/additionalProperties",
-                        "keyword": "additionalProperties",
-                        "params": {
-                            "additionalProperty": "structuralMetadata"
-                        },
-                        "message": "must NOT have additional properties"
-                }
-            ]
+        "name": "HDRUK",
+        "version": "2.2.0",
+        "matches": false,
+        "errors": [
+            {
+                "instancePath": "/summary",
+                "schemaPath": "#/required",
+                "keyword": "required",
+                "params": {
+                    "missingProperty": "publisher"
+                },
+                "message": "must have required property 'publisher'"
+            }
+        ]
     },
     {
-            "name": "HDRUK",
-            "version": "2.2.1",
-            "matches": false,
-            "errors": [
-                {
-                        "instancePath": "/summary",
-                        "schemaPath": "#/required",
-                        "keyword": "required",
-                        "params": {
-                            "missingProperty": "datasetType"
-                        },
-                        "message": "must have required property 'datasetType'"
-                }
-            ]
+        "name": "HDRUK",
+        "version": "3.0.0",
+        "matches": true,
+        "errors": null
     },
     {
-            "name": "HDRUK",
-            "version": "2.2.0",
-            "matches": false,
-            "errors": [
-                {
-                        "instancePath": "/summary",
-                        "schemaPath": "#/required",
-                        "keyword": "required",
-                        "params": {
-                            "missingProperty": "datasetType"
-                        },
-                        "message": "must have required property 'datasetType'"
-                }
-            ]
+        "name": "GWDM",
+        "version": "1.0",
+        "matches": false,
+        "errors": [
+            {
+                "instancePath": "",
+                "schemaPath": "#/required",
+                "keyword": "required",
+                "params": {
+                    "missingProperty": "required"
+                },
+                "message": "must have required property 'required'"
+            }
+        ]
     },
     {
-            "name": "GWDM",
-            "version": "1.0",
-            "matches": false,
-            "errors": [
-                {
-                        "instancePath": "",
-                        "schemaPath": "#/required",
-                        "keyword": "required",
-                        "params": {
-                            "missingProperty": "required"
-                        },
-                        "message": "must have required property 'required'"
-                }
-            ]
+        "name": "GWDM",
+        "version": "1.1",
+        "matches": false,
+        "errors": [
+            {
+                "instancePath": "",
+                "schemaPath": "#/required",
+                "keyword": "required",
+                "params": {
+                    "missingProperty": "required"
+                },
+                "message": "must have required property 'required'"
+            }
+        ]
     },
     {
-            "name": "GWDM",
-            "version": "1.1",
-            "matches": false,
-            "errors": [
-                {
-                        "instancePath": "",
-                        "schemaPath": "#/required",
-                        "keyword": "required",
-                        "params": {
-                            "missingProperty": "required"
-                        },
-                        "message": "must have required property 'required'"
-                }
-            ]
+        "name": "GWDM",
+        "version": "1.2",
+        "matches": false,
+        "errors": [
+            {
+                "instancePath": "",
+                "schemaPath": "#/required",
+                "keyword": "required",
+                "params": {
+                    "missingProperty": "required"
+                },
+                "message": "must have required property 'required'"
+            }
+        ]
     },
     {
-            "name": "GWDM",
-            "version": "1.2",
-            "matches": false,
-            "errors": [
-                {
-                        "instancePath": "",
-                        "schemaPath": "#/required",
-                        "keyword": "required",
-                        "params": {
-                            "missingProperty": "required"
-                        },
-                        "message": "must have required property 'required'"
-                }
-            ]
+        "name": "GWDM",
+        "version": "2.0",
+        "matches": false,
+        "errors": [
+            {
+                "instancePath": "",
+                "schemaPath": "#/required",
+                "keyword": "required",
+                "params": {
+                    "missingProperty": "required"
+                },
+                "message": "must have required property 'required'"
+            }
+        ]
     },
     {
-            "name": "SchemaOrg",
-            "version": "default",
-            "matches": false,
-            "errors": [
-                {
-                        "instancePath": "",
-                        "schemaPath": "#/required",
-                        "keyword": "required",
-                        "params": {
-                            "missingProperty": "name"
-                        },
-                        "message": "must have required property 'name'"
-                }
-            ]
+        "name": "SchemaOrg",
+        "version": "default",
+        "matches": false,
+        "errors": [
+            {
+                "instancePath": "",
+                "schemaPath": "#/required",
+                "keyword": "required",
+                "params": {
+                    "missingProperty": "name"
+                },
+                "message": "must have required property 'name'"
+            }
+        ]
     },
     {
-            "name": "SchemaOrg",
-            "version": "BioSchema",
-            "matches": false,
-            "errors": [
-                {
-                        "instancePath": "",
-                        "schemaPath": "#/required",
-                        "keyword": "required",
-                        "params": {
-                            "missingProperty": "name"
-                        },
-                        "message": "must have required property 'name'"
-                }
-            ]
+        "name": "SchemaOrg",
+        "version": "BioSchema",
+        "matches": false,
+        "errors": [
+            {
+                "instancePath": "",
+                "schemaPath": "#/required",
+                "keyword": "required",
+                "params": {
+                    "missingProperty": "name"
+                },
+                "message": "must have required property 'name'"
+            }
+        ]
     },
     {
-            "name": "SchemaOrg",
-            "version": "GoogleRecommended",
-            "matches": false,
-            "errors": [
-                {
-                        "instancePath": "",
-                        "schemaPath": "#/required",
-                        "keyword": "required",
-                        "params": {
-                            "missingProperty": "name"
-                        },
-                        "message": "must have required property 'name'"
-                }
-            ]
+        "name": "SchemaOrg",
+        "version": "GoogleRecommended",
+        "matches": false,
+        "errors": [
+            {
+                "instancePath": "",
+                "schemaPath": "#/required",
+                "keyword": "required",
+                "params": {
+                    "missingProperty": "name"
+                },
+                "message": "must have required property 'name'"
+            }
+        ]
     }
 ]
 ```
@@ -266,7 +266,7 @@ You can use the route `validate` instead of `find` to validate a payload against
     import json
     import requests
 
-    metadata = json.load(open("example-hdruk212.json"))
+    metadata = json.load(open("example-hdruk300.json"))
 
     headers = {
         "Content-Type": "application/json",
@@ -275,7 +275,7 @@ You can use the route `validate` instead of `find` to validate a payload against
     traser_uri = "https://hdr-gateway-traser-dev-qmnkcg5qjq-ew.a.run.app"
 
     response = requests.post(
-        f"{traser_uri}/validate?input_schema=HDRUK&input_version=2.1.2",
+        f"{traser_uri}/validate?input_schema=HDRUK&input_version=3.0.0",
         headers=headers, json={"metadata":metadata}
     )
 
@@ -321,8 +321,8 @@ You can use the route `validate` instead of `find` to validate a payload against
 === "CURL"
 
     ```
-    metadata='{"metadata": '$(cat example-hdruk212.json)'}'
-    curl --location 'https://hdr-gateway-traser-dev-qmnkcg5qjq-ew.a.run.app/validate?input_schema=HDRUK&input_version=2.1.2' \
+    metadata='{"metadata": '$(cat example-hdruk300.json)'}'
+    curl --location 'https://hdr-gateway-traser-dev-qmnkcg5qjq-ew.a.run.app/validate?input_schema=HDRUK&input_version=3.0.0' \
     --header 'Content-Type: application/json' \
     --data "$metadata"
     ```

@@ -40,26 +40,22 @@
             "rorId": null
         },
         "populationSize": 907515,
-        "datasetSubType": null
+        "datasetSubType": null,
+        "inPipeline": null
     },
     "coverage": {
         "pathway": "NOT APPLICABLE",
         "spatial": "https://www.geonames.org/countries/GB/united-kingdom.html",
         "followup": "UNKNOWN",
         "typicalAgeRange": "0-0",
-        "biologicalsamples": null,
-        "gender": null,
-        "psychological": null,
-        "physical": null,
-        "anthropometric": null,
-        "lifestyle": null,
-        "socioeconomic": null
+        "datasetCompleteness": null
     },
     "provenance": {
         "origin": {
             "purpose": "OTHER",
             "source": "MACHINE GENERATED",
-            "collectionSituation": "OTHER"
+            "collectionSituation": "OTHER",
+            "imageContrast": null
         },
         "temporal": {
             "endDate": "2022-04-30",
@@ -78,7 +74,8 @@
             "accessRights": "https://raw.githubusercontent.com/HDRUK/papers/master/LICENSE",
             "accessService": "https://github.com/HDRUK/papers",
             "accessRequestCost": "Free",
-            "accessServiceCategory": null
+            "accessServiceCategory": null,
+            "accessMode": "New project"
         },
         "usage": {
             "dataUseLimitation": "GENERAL RESEARCH USE",
@@ -109,18 +106,20 @@
         },
         "investigations": "https://github.com/HDRUK/papers",
         "associatedMedia": null,
-        "syntheticDataWebLink": null
+        "syntheticDataWebLink": null,
+        "publicationAboutDataset": null,
+        "publicationUsingDataset": null
     },
     "observations": [
         {
-            "observedNode": "PERSONS",
+            "observedNode": "Person",
             "measuredValue": 907515,
             "disambiguatingDescription": "Number of CPRD GOLD patients from June 2020 build with a cancer identifier in set 19",
             "observationDate": "2020-06-26",
             "measuredProperty": "Count"
         },
         {
-            "observedNode": "FINDINGS",
+            "observedNode": "Findings",
             "measuredValue": 907515,
             "disambiguatingDescription": "Number of CPRD GOLD patients from June 2020 build with a cancer identifier in set 19",
             "observationDate": "2020-06-26",
@@ -141,6 +140,5 @@
                 }
             ]
         }
-    ],
-    "tissuesSampleCollection": null
+    ]
 }

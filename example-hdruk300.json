@@ -7,52 +7,66 @@
     "summary": {
         "title": "Improving Access to Psychological Therapies Data Set",
         "abstract": "Patient-level data set that captures information about people in contact with services commissioned as part of the adult Improving Access to Psychological Services (IAPT) programme.",
-        "publisher": {
-            "identifier": "https://web.www.healthdatagateway.org/5f86cd34980f41c6f02261f4",
-            "name": "NHS DIGITAL",
-            "logo": "",
-            "description": "",
-            "contactPoint": null,
-            "memberOf": "ALLIANCE"
-        },
         "contactPoint": "enquiries@nhsdigital.nhs.uk",
         "keywords": " Depression,Anxiety,CBT,Counselling,Talking theraphy,Cognitive,National Core Study,NCS",
         "alternateIdentifiers": null,
-        "doiName": ""
+        "doiName": null,
+        "populationSize": -1,
+        "dataProvider": {
+            "identifier": "https://web.www.healthdatagateway.org/5f86cd34980f41c6f02261f4",
+            "name": "NHS DIGITAL",
+            "logo": null,
+            "description": null,
+            "contactPoint": null,
+            "memberOf": "ALLIANCE"
+        }
     },
     "documentation": {
         "description": "Collecting information about people in contact with adult psychological therapy services in England. The IAPT data set was developed with the IAPT programme as a patient level, output based, secondary uses data set which aims to deliver robust, comprehensive, nationally consistent and comparable information for patients accessing NHS-funded IAPT services in England. This national data set has been collected since April 2012 and is a mandatory submission for all NHS funded care, including care delivered by independent sector healthcare providers. Data collection on patients with depression and anxiety disorders that are offered psychological therapies, so that we can improve the delivery of care for these conditions.\n\nProviders of NHS-funded IAPT services are required to submit data to NHS Digital on a monthly basis.\n\nAs a secondary uses data set the IAPT data set re-uses clinical and operational data for purposes other than direct patient care. It defines the data items, definitions and associated value sets extracted or derived from local information systems and sent to NHS Digital for analysis purposes. Timescales for dissemination can be found under 'Our Service Levels' at the following link: https://digital.nhs.uk/services/data-access-request-service-dars/data-access-request-service-dars-process",
-        "associatedMedia": "https://digital.nhs.uk/data-and-information/data-collections-and-data-sets/data-sets/improving-access-to-psychological-therapies-data-set,https://digital.nhs.uk/about-nhs-digital/corporate-information-and-documents/directions-and-data-provision-notices/data-provision-notices-dpns/improving-access-to-psychological-therapies-data-set-data-provision-notice",
-        "isPartOf": "mental health"
+        "associatedMedia": null,
+        "inPipeline": null
     },
     "coverage": {
         "spatial": "United Kingdom,England",
-        "typicalAgeRange": "18-150",
-        "physicalSampleAvailability": null,
         "followup": "0 - 6 MONTHS",
-        "pathway": ""
+        "pathway": null,
+        "gender": null,
+        "typicalAgeRangeMin": 18,
+        "typicalAgeRangeMax": 150,
+        "datasetCompleteness": null,
+        "materialType": [
+            "None/not available"
+        ]
     },
     "provenance": {
         "origin": {
-            "purpose": "OTHER,ADMINISTRATIVE",
-            "source": "EPR",
-            "collectionSituation": "COMMUNITY,PRIMARY CARE"
+            "purpose": [
+                "Other",
+                "Administrative"
+            ],
+            "source": [
+                "EPR"
+            ],
+            "datasetType": "Health and disease",
+            "datasetSubType": "Not applicable",
+            "collectionSource": null,
+            "imageContrast": null
         },
         "temporal": {
-            "accrualPeriodicity": "MONTHLY",
             "distributionReleaseDate": null,
             "startDate": "2012-04-01",
             "endDate": null,
-            "timeLag": "2-6 MONTHS"
+            "timeLag": "2-6 months",
+            "publishingFrequency": "Monthly"
         }
     },
     "accessibility": {
         "usage": {
-            "dataUseLimitation": "NO RESTRICTION",
-            "dataUseRequirements": "INSTITUTION SPECIFIC RESTRICTIONS,PROJECT SPECIFIC RESTRICTIONS,TIME LIMIT ON USE",
-            "resourceCreator": "NHS DIGITIAL",
-            "investigations": "https://digital.nhs.uk/services/data-access-request-service-dars/register-of-approved-data-releases",
-            "isReferencedBy": null
+            "dataUseLimitation": [
+                "No restriction"
+            ],
+            "dataUseRequirements": null,
+            "resourceCreator": null
         },
         "access": {
             "accessRights": "https://digital.nhs.uk/services/data-access-request-service-dars",
@@ -61,67 +75,86 @@
             "deliveryLeadTime": null,
             "jurisdiction": "GB-ENG",
             "dataProcessor": null,
-            "dataController": "NHS DIGITAL"
+            "dataController": "NHS DIGITAL",
+            "accessServiceCategory": null,
+            "accessMode": "New project"
         },
         "formatAndStandards": {
-            "vocabularyEncodingScheme": "ODS,SNOMED CT,NHS NATIONAL CODES,ICD10",
-            "conformsTo": "NHS DATA DICTIONARY",
+            "vocabularyEncodingScheme": [
+                "ODS",
+                "SNOMED CT",
+                "NHS NATIONAL CODES",
+                "ICD10"
+            ],
+            "conformsTo": [
+                "NHS DATA DICTIONARY"
+            ],
             "language": "en",
             "format": "CSV"
         }
     },
     "enrichmentAndLinkage": {
-        "qualifiedRelation": "https://digital.nhs.uk/services/data-access-request-service-dars/register-of-approved-data-releases",
-        "derivation": "Data will be minimised as appropriate relative to the data access application",
-        "tools": "https://digital.nhs.uk/data-and-information/data-collections-and-data-sets/data-sets/improving-access-to-psychological-therapies-data-set/submitting-iapt-data"
+        "tools": null,
+        "derivedFrom": null,
+        "isPartOf": null,
+        "linkableDatasets": null,
+        "similarToDatasets": null,
+        "publicationAboutDataset": null,
+        "investigations": null,
+        "publicationUsingDataset": null
     },
     "observations": [
         {
-            "observedNode": "EVENTS",
+            "observedNode": "Event",
             "measuredValue": 114125,
             "measuredProperty": "COUNT",
             "observationDate": "2021-02-25",
             "disambiguatingDescription": "In December 2020 there were 114,125 referrals made into IAPT services in England."
         },
         {
-            "observedNode": "EVENTS",
+            "observedNode": "Event",
             "measuredValue": 81578,
             "measuredProperty": "COUNT",
             "observationDate": "2021-02-25",
             "disambiguatingDescription": "In December 2020, 81,578 referrals into IAPT services in England started a course of treatment."
         },
         {
-            "observedNode": "EVENTS",
+            "observedNode": "Event",
             "measuredValue": 48331,
             "measuredProperty": "COUNT",
             "observationDate": "2021-02-25",
             "disambiguatingDescription": "In December 2020, 48,331 referrals into IAPT services in England completed a course of treatment."
         }
     ],
-    "structuralMetadata": [
-        {
-            "name": "IAPT.iapt.Rep_Referral",
-            "description": "IAPT.iapt.Rep_Referral",
-            "elements": [
-                {
-                    "name": "Count of number of Non-guided Self Help (Computer) sessions (derived)",
-                    "description": "Count of number of Non-guided Self Help (Computer) sessions (derived)",
-                    "dataType": "Number",
-                    "sensitive": false
-                }
-            ]
-        },
-        {
-            "name": "IAPT.iapt.Rep_Referral",
-            "description": "IAPT.iapt.Rep_Referral",
-            "elements": [
-                {
-                    "name": "Pseudonymised Service Request Identifier",
-                    "description": "A request for the provision of care services to a PATIENT.",
-                    "dataType": "String",
-                    "sensitive": false
-                }
-            ]
-        }
-    ]
+    "structuralMetadata": {
+        "tables": [
+            {
+                "name": "IAPT.iapt.Rep_Referral",
+                "description": "IAPT.iapt.Rep_Referral",
+                "columns": [
+                    {
+                        "name": "Count of number of Non-guided Self Help (Computer) sessions (derived)",
+                        "description": "Count of number of Non-guided Self Help (Computer) sessions (derived)",
+                        "dataType": "Number",
+                        "sensitive": false,
+                        "values": null
+                    }
+                ]
+            },
+            {
+                "name": "IAPT.iapt.Rep_Referral",
+                "description": "IAPT.iapt.Rep_Referral",
+                "columns": [
+                    {
+                        "name": "Pseudonymised Service Request Identifier",
+                        "description": "A request for the provision of care services to a PATIENT.",
+                        "dataType": "String",
+                        "sensitive": false,
+                        "values": null
+                    }
+                ]
+            }
+        ],
+        "syntheticDataWebLink": null
+    }
 }

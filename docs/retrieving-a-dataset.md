@@ -122,13 +122,13 @@ Sample output:
 
 ```
 
-#### HDRUK 2.2.0 (public schema)
+#### HDRUK 3.0.0 (public schema)
 
-Using `/api/v1/integrations/datasets/<dataset_id>?schema_model=HDRUK&schema_version=2.2.0` you can get back your metadata conforming to our public schema from our Gateway Data Model (GWDM):
+Using `/api/v1/integrations/datasets/<dataset_id>?schema_model=HDRUK&schema_version=3.0.0` you can get back your metadata conforming to our public schema from our Gateway Data Model (GWDM):
 
 ```json
 {
-    "message": "success, translated to model=HDRUK version=2.2.0",
+    "message": "success, translated to model=HDRUK version=3.0.0",
     "data": {
         "identifier": "96bea284-dd48-4617-84e5-8b8f888b2fb3",
         "issued": "2021-05-10T00:00:00.000Z",
