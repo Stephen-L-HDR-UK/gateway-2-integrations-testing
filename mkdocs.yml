@@ -24,9 +24,8 @@ nav:
             - Manage a Private App: private-app-manage.md
       - Using the Gateway:
             - Login: fe-login.md
-            - FMA Setup: fe-creating-fma.md
       - Integrations:
-            - HDR UK Datasets Integration: integrations-hdruk-metadata.md
+            - HDR UK Datasets Integration: integrations-hdruk-datasets.md
       - Metadata:
             - Create: creating-metadata.md
             - Validate: metadata-validation.md
@@ -37,7 +36,7 @@ nav:
                   - Retrieve: retrieving-a-dataset.md
                   - Update: updating-a-dataset.md
                   - Delete: deleting-a-dataset.md
-      - Using FMA:
+      - Using HDR uk Datasets Federation:
             - Test Server Example: fma-test-server.md
 plugins:
       - search

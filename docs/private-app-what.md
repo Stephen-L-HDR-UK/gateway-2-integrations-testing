@@ -1,6 +1,8 @@
+# Private Apps
+
 ## What is a Private App
 
-Private apps allow you to use the Gateway’s APIs to access specific data from your Gateway Team. You can define what features/services each Private App is able to access from the management page. An access token is generated called the “ClientID” which must be sent with each request to the Gateway APIs. 
+Private apps allow you to use the Gateway’s APIs to access specific data from your Gateway Team. You can define what features/services each Private App is able to access from the management page. Two access tokens will be generated called the "AppID" and “ClientID”, both of which must be sent with each request to the Gateway APIs. 
 
 Private Apps are perfect for users who want to programmatically interact with the features and data on the Gateway and how you interact with the Gateway APIs is entirely in your control. 
 
