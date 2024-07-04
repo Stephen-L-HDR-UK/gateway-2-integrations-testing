@@ -2764,7 +2764,7 @@ The change log for this schema can be found at:
     }
     ```
 
-### HDR v3.0.0
+### HDRUK 3.0.0 Schema
 
     ```json
     {
