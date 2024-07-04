@@ -36,7 +36,7 @@ nav:
                   - Retrieve: retrieving-a-dataset.md
                   - Update: updating-a-dataset.md
                   - Delete: deleting-a-dataset.md
-      - Using HDR uk Datasets Federation:
+      - Using HDR UK Datasets Federation:
             - Test Server Example: fma-test-server.md
 plugins:
       - search
