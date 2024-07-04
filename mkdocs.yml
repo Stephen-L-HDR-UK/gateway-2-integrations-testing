@@ -1,53 +1,57 @@
-site_name: Gateway Integrations Guide
+site_name: Gateway Technical Guides
 theme:
-    name: material
-    #custom_dir: docs/overrides
-    palette:
-        scheme: hdruk
-    logo: images/logo.png
-    favicon: images/favicon.png
-    features:
-        - navigation.footer
-        - navigation.instant
-        - navigation.expand
-        - content.code.copy
-        - content.code.annotate
-        - toc.follow
+      name: material
+      #custom_dir: docs/overrides
+      palette:
+            scheme: hdruk
+      logo: images/logo.png
+      favicon: images/favicon.png
+      features:
+            - navigation.footer
+            - navigation.instant
+            - navigation.expand
+            - content.code.copy
+            - content.code.annotate
+            - toc.follow
 extra_css:
-    - stylesheets/custom.css
+      - stylesheets/custom.css
 
 nav:
-    - Home: index.md
-    - Gateway 2.0:
-          - Login: fe-login.md
-          - API Management: fe-creating-an-app.md
-          - FMA Setup: fe-creating-fma.md
-    - Metadata:
-          - Create: creating-metadata.md
-          - Validate: metadata-validation.md
-          - Exemplars: example-metadata.md
-    - Using the API:
-          - Datasets:
-                - Create: creating-a-dataset.md
-                - Retrieve: retrieving-a-dataset.md
-                - Update: updating-a-dataset.md
-                - Delete: deleting-a-dataset.md
-    - Using FMA:
-          - Test Server Example: fma-test-server.md
+      - Home: index.md
+      - Accessing Our APIs:
+            - What is a Private App: private-app-what.md
+            - Create a Private App: private-app-create.md
+            - Manage a Private App: private-app-manage.md
+      - Using the Gateway:
+            - Login: fe-login.md
+      - Integrations:
+            - HDR UK Datasets Integration: integrations-hdruk-datasets.md
+      - Metadata:
+            - Create: creating-metadata.md
+            - Validate: metadata-validation.md
+            - Exemplars: example-metadata.md
+      - Using the API:
+            - Datasets:
+                  - Create: creating-a-dataset.md
+                  - Retrieve: retrieving-a-dataset.md
+                  - Update: updating-a-dataset.md
+                  - Delete: deleting-a-dataset.md
+      - Using HDR UK Datasets Federation:
+            - Test Server Example: fma-test-server.md
 plugins:
-    - search
+      - search
 
 markdown_extensions:
-    - admonition
-    - pymdownx.details
-    - pymdownx.highlight:
-          anchor_linenums: true
-          line_spans: __span
-          pygments_lang_class: true
-    - pymdownx.inlinehilite
-    - pymdownx.snippets
-    - pymdownx.superfences
-    - pymdownx.tabbed:
-          alternate_style: true
-    - attr_list
-    - md_in_html
+      - admonition
+      - pymdownx.details
+      - pymdownx.highlight:
+            anchor_linenums: true
+            line_spans: __span
+            pygments_lang_class: true
+      - pymdownx.inlinehilite
+      - pymdownx.snippets
+      - pymdownx.superfences
+      - pymdownx.tabbed:
+            alternate_style: true
+      - attr_list
+      - md_in_html
