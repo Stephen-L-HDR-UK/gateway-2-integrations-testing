@@ -24,7 +24,8 @@ nav:
             - What is a Private App: private-app-what.md
             - Create a Private App: private-app-create.md
             - Manage a Private App: private-app-manage.md
-            - Making an authenticated request: private-app-authenticated-request.md
+      - Using our APIs:
+            - Making an authenticated request: using-our-apis/making-an-authenticated-request.md
       - Integrations:
             - HDR UK Datasets Integration: integrations-hdruk-datasets.md
       - Metadata:
