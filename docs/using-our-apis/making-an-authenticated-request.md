@@ -86,7 +86,7 @@ You can also test our APIs from the Swagger documentation in the link below.
     package main
 
     import {
-        "ftm"
+        "fmt"
         "io/ioutil"
         "net/http"
     }
@@ -112,6 +112,6 @@ You can also test our APIs from the Swagger documentation in the link below.
             panic(err)
         }
 
-        ftm.Println(string(body))
+        fmt.Println(string(body))
     }
     ```
