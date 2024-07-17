@@ -62,7 +62,7 @@ You can also test our APIs from the Swagger documentation in the link below.
         CURL *curl;
         CURLcode res;
 
-        curl = surl_easy_init();
+        curl = curl_easy_init();
         if(curl){
             curl_easy_setopt(curl, CURLOPT_URL, "https://api.healthdatagateway.org/api/v1/datasets");
 
