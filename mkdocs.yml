@@ -18,12 +18,13 @@ extra_css:
 
 nav:
       - Home: index.md
+      - Using the Gateway:
+            - Login: fe-login.md
       - Accessing Our APIs:
             - What is a Private App: private-app-what.md
             - Create a Private App: private-app-create.md
             - Manage a Private App: private-app-manage.md
-      - Using the Gateway:
-            - Login: fe-login.md
+            - Making an authenticated request: private-app-authenticated-request.md
       - Integrations:
             - HDR UK Datasets Integration: integrations-hdruk-datasets.md
       - Metadata:
